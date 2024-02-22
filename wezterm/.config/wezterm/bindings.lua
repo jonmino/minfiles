@@ -16,7 +16,7 @@ bindings.keys = {
 	{ key = '0',     mods = 'CTRL',       action = act.ResetFontSize },
 	{ key = 'f',     mods = 'CTRL',       action = act.Search 'CurrentSelectionOrEmptyString' },
 	{ key = 'p',     mods = 'CTRL',       action = act.ActivateCommandPalette },
-	{ key = 'R',     mods = 'CTRL|ALT',   action = act.ReloadConfiguration },
+	{ key = 'R',     mods = 'LEADER',     action = act.ReloadConfiguration },
 	{ key = '[',     mods = 'LEADER',     action = act.ActivateTabRelative(-1) },
 	{ key = ']',     mods = 'LEADER',     action = act.ActivateTabRelative(1) },
 	{ key = 'c',     mods = 'LEADER',     action = act.ActivateCopyMode },

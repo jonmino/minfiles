@@ -6,9 +6,12 @@ eval $(ssh-agent -s)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# Integrations and setup of programs
 source ~/.config/wezterm/wezterm.sh # Shell integration
 eval "$(zoxide init zsh --cmd cd)"
-
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 # Sourcing Plugins
 source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
