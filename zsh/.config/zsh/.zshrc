@@ -25,6 +25,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files
+fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
 
 # Keybindings
 bindkey '^[OA' history-search-backward
