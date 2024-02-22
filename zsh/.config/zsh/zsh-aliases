@@ -8,10 +8,12 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
 # ls/k/nnn aliases
-alias ll='ls -CFAlh'
-alias la='ls -CFA'
-alias l='ls -CF'
-alias yazi="~/Downloads/yazi/target/release/yazi ."
+alias ll='eza -lah --git --icons=always --colour-scale=size'
+alias la='eza -ah'
+alias ldir='eza -ah --only-dirs'
+alias lf='eza -ah --only-files'
+alias lt='eza -Th'
+alias l='eza'
 alias y="yazicdonquit"
 alias lg="lazygit"
 

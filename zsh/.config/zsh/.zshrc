@@ -20,11 +20,17 @@ source ${XDG_CONFIG_HOME}/zsh/zsh-aliases
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 setopt COMBINING_CHARS # combine umlauts
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # Include hidden files
 
 # Keybindings
 bindkey '^[OA' history-search-backward
 bindkey '^[OB' history-search-forward
-bindkey '^q' mambas # ctrl + q as shortcut keybinding
+bindkey -s '^q' 'mambas\n' # ctrl + q as shortcut keybinding
+bindkey -s '^o' 'y\n'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
