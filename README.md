@@ -18,5 +18,5 @@ and [SourceCodePro](https://github.com/gabrielelana/awesome-terminal-fonts/blob/
 ## Apply configuration
 Everyhting can be symlinked to the correct place by running:
 ```
-stow .
+stow */
 ```
