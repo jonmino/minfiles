@@ -11,6 +11,7 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # Sourcing Plugins
 source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
+source ~/minfiles/submodules/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source ~/minfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Basic Settings

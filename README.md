@@ -39,3 +39,8 @@ Everyhting can be symlinked to the correct place by running:
 ```
 stow */
 ```
+### Further commands that need to be run:
+Apply the catppuccin theme to fast-syntax-highlighting
+```
+fast-theme XDG:catppuccin-mocha
+```
