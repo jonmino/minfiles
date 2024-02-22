@@ -7,33 +7,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Basic Settings
+eval "$(zoxide init zsh --cmd cd)"
+
+# Sourcing Plugins
 source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
+source ~/minfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Basic Settings
 source ${XDG_CONFIG_HOME}/zsh/zsh-functions
 source ${XDG_CONFIG_HOME}/zsh/zsh-aliases
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
+setopt COMBINING_CHARS # combine umlauts
 
 # Keybindings
+bindkey '^[OA' history-search-backward
+bindkey '^[OB' history-search-forward
 bindkey '^q' mambas # ctrl + q as shortcut keybinding
-
-# Mocha Theme for fast syntax highlighting
-source ~/.config/zsh/catppuccin_mocha-fzf.zsh
-
-# plugins=(
-#     command-not-found # suggestions on how to get command working
-#     copybuffer # "CTRL-O" to Coppy current Textinput
-#     copypath # "copypath" to clipboard
-#     dirhistory # Navigate directories with alt+arrow keys
-#     k # k for better ls
-#     sudo #Doppel "ESC" für sudo
-#     zsh-autosuggestions # auto completion
-#     fast-syntax-highlighting # fast fish like syntax highlighting
-#     # zsh-vi-mode # better vim mode
-# )
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-setopt COMBINING_CHARS # combine umlauts
-eval "$(zoxide init zsh --cmd cd)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

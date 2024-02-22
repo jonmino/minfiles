@@ -1,3 +1,6 @@
 [submodule "submodules/powerlevel10k"]
 	path = submodules/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "submodules/zsh-autosuggestions"]
+	path = submodules/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
