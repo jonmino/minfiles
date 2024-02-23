@@ -2,6 +2,10 @@
 My personal dotfiles based on the amazing work of other people.
 
 ## Prerequisites and Recommendations
+For the clipboard to be synced between neovim and Windows you have to installed win32yank. The easiest way is
+```
+winget install win32yank
+```
 ### Required basic programs:
 ```
 apt install build-essential cmake coreutils curl evince fzf less make ripgrep sshfs tar unzip wget
@@ -10,10 +14,6 @@ apt install build-essential cmake coreutils curl evince fzf less make ripgrep ss
 ```
 apt install zsh
 ```
-#### ZSH Plugins
-First install the Plugin manager:
-
-Then install the following plugins:
 ### Git
 ```
 apt install git
