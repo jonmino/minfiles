@@ -13,10 +13,8 @@ eval "$(zoxide init zsh --cmd cd)"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
-# Sourcing Plugins
+# Sourcing Theme
 source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
-source ~/minfiles/submodules/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source ~/minfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Basic Settings
 source ${XDG_CONFIG_HOME}/zsh/zsh-functions
@@ -32,6 +30,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files
 fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
+zle_highlight=('paste:none')
 
 # vi mode
 bindkey -v
@@ -73,6 +72,11 @@ if [ -f "/home/jomino/.local/conda/etc/profile.d/mamba.sh" ]; then
     . "/home/jomino/.local/conda/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+
+# Load other Plugins
+source ~/minfiles/submodules/zsh-no-ps2/zsh-no-ps2.plugin.zsh
+source ~/minfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/minfiles/submodules/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
