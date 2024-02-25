@@ -1,14 +1,16 @@
-# Initialize ssh-agent
-eval $(ssh-agent -s)
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# Initialize ssh-agent with suppressed output
+{eval "$(ssh-agent -s)";} &>/dev/null
 
 # Integrations and setup of programs
 source ~/.config/wezterm/wezterm.sh # Shell integration
+source ~/.config/zsh/lib/func.zsh
+source ~/.config/zsh/lib/termintegration.zsh
 eval "$(zoxide init zsh --cmd cd)"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
@@ -27,10 +29,13 @@ setopt COMBINING_CHARS # combine umlauts
 autoload -U compinit
 zstyle ':completion:*' menu select # Menu selection of Tab complete
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots) # Include hidden files
 fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
 zle_highlight=('paste:none')
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    completion
+    history
+)
 
 # vi mode
 bindkey -v

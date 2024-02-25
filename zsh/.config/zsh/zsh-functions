@@ -46,3 +46,10 @@ zle -N zle-keymap-select
 _fix_cursor() {
    echo -ne '\e[6 q'
 }
+
+function profileZSH() {
+  zmodload zsh/zprof
+  source ~/.config/zsh/.zshrc
+  zprof
+}
+zle -N profileZSH

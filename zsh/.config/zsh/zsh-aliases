@@ -12,7 +12,7 @@ alias ll='eza -lah --git --icons=always --colour-scale=size'
 alias la='eza -ah'
 alias ldir='eza -ah --only-dirs'
 alias lf='eza -ah --only-files'
-alias lt='eza -Th'
+alias lt='eza -Th --level=2'
 alias l='eza'
 alias y="yazicdonquit"
 alias lg="lazygit"
@@ -21,13 +21,10 @@ alias lg="lazygit"
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
 
 # configs
-alias zshconf="nvim ~/dotfiles/.zshrc"
-alias updateconf="nvim ~/dotfiles/update.zsh"
-alias ohmyzsh="nvim ~/dotfiles/.oh-my-zsh"
-alias zshconf="nvim ~/dotfiles/.zshrc"
-alias p10kconf="nvim ~/dotfiles/.p10k.zsh"
-alias aliasconf="nvim ~/dotfiles/.oh-my-zsh/custom/alias.zsh" # <- this file
-alias tmuxconf="nvim ~/dotfiles/.config/tmux/tmux.conf"
+alias zshconf="nvim ~/.config/zsh/.zshrc"
+alias updateconf="nvim ~/minfiles/scripts/update.zsh"
+alias p10kconf="nvim ~/.config/zsh/.p10k.zsh"
+alias aliasconf="nvim ~/.config/zsh/zsh-aliases" # <- this file
 
 # make
 alias remake='make clean && make'
@@ -57,4 +54,4 @@ alias updatetl="tlmgr update --self --all --reinstall-forcibly-removed"
 
 # misc 
 alias rm='rm -rfi'
-alias update="zsh ~/dotfiles/update.zsh"
+alias update="zsh ~/minfiles/scripts/update.zsh"
