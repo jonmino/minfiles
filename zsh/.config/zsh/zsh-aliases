@@ -1,11 +1,11 @@
 # Alias definitions
 
 #cd aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../..'
+alias ..='builtin cd ..'
+alias ...='builtin cd ../..'
+alias ....='builtin cd ../../..'
+alias .4='builtin cd ../../../../'
+alias .5='builtin cd ../../../../..'
 
 # ls/k/nnn aliases
 alias ll='eza -lah --git --icons=always --colour-scale=size'
@@ -16,6 +16,7 @@ alias lt='eza -Th --level=2'
 alias l='eza'
 alias y="yazicdonquit"
 alias lg="lazygit"
+alias bcd="builtin cd"
 
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
@@ -53,5 +54,5 @@ alias updatetl="tlmgr update --self --all --reinstall-forcibly-removed"
 
 
 # misc 
-alias rm='rm -rfi'
+alias rm='rm -i'
 alias update="zsh ~/minfiles/scripts/update.zsh"

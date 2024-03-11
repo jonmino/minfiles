@@ -11,9 +11,9 @@ fi
 source ~/.config/wezterm/wezterm.sh # Shell integration
 source ~/.config/zsh/lib/func.zsh
 source ~/.config/zsh/lib/termintegration.zsh
-eval "$(zoxide init zsh --cmd cd)"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+eval "$(zoxide init zsh --cmd cd)" # Initialize zoxide and replace cd command with it
 
 # Sourcing Theme
 source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
@@ -21,6 +21,28 @@ source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
 # Basic Settings
 source ${XDG_CONFIG_HOME}/zsh/zsh-functions
 source ${XDG_CONFIG_HOME}/zsh/zsh-aliases
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+precmd_functions+=(_fix_cursor) # Change default Cursor
+
+# Use vim keys in tab complete menu: Broken?
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Keybindings
+bindkey '^[OA' history-search-backward
+bindkey '^[OB' history-search-forward
+bindkey '^o' mambas # ctrl + q as shortcut keybinding
+
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 HISTSIZE=10000
@@ -36,28 +58,6 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
     completion
     history
 )
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-precmd_functions+=(_fix_cursor) # Change default Cursor
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
-
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-# Keybindings
-bindkey '^[OA' history-search-backward
-bindkey '^[OB' history-search-forward
-bindkey '^o' mambas # ctrl + q as shortcut keybinding
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
