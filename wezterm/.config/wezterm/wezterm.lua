@@ -18,7 +18,13 @@ end
 config.default_domain = "WSL:Ubuntu"
 config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
 config.font = wezterm.font_with_fallback({
-	{ family = "MonaspiceNe NFM",                         weight = "Regular", italic = false, scale = 1.25 },
+	{
+		family = "MonaspiceNe NFM Medium",
+		weight = "Regular",
+		italic = false,
+		scale = 1.25, -- The code below activates font ligatures
+		harfbuzz_features = { "liga=1", "dlig=1", "calt=1", "clig=1" }
+	},
 	{ family = "MesloLGS NF",                             scale = 1.25 },
 	{ family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1.25 },
 })
