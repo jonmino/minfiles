@@ -2,7 +2,7 @@
 	name = jomino
 	email = github@nc.seltsam.net
 [core]
-	editor = vim
+	editor = nvim
 [alias]
 	lg = log --graph --branches --remotes --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [rebase]
