@@ -42,14 +42,32 @@
     {
         "defaults": 
         {
-            "backgroundImage": "D:\\OneDrive\\Red_dimmed.png",
+            "backgroundImage": null,
+            "backgroundImageOpacity": 1.0,
             "colorScheme": "Catppuccin Mocha",
             "cursorShape": "vintage",
             "font": 
             {
-                "face": "FiraCode Nerd Font Mono",
+                "face": "MonaspiceNe Nerd Font Mono",
+                "features": 
+                {
+                    "calt": 1,
+                    "clig": 1,
+                    "dlig": 1,
+                    "liga": 1,
+                    "ss01": 1,
+                    "ss02": 1,
+                    "ss03": 1,
+                    "ss04": 1,
+                    "ss05": 1,
+                    "ss06": 1,
+                    "ss07": 1,
+                    "ss08": 1
+                },
                 "weight": "medium"
-            }
+            },
+            "opacity": 92,
+            "useAcrylic": false
         },
         "list": 
         [
@@ -73,41 +91,10 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "backgroundImage": "D:\\OneDrive\\Red_dimmed.png",
-                "bellStyle": "audible",
-                "closeOnExit": "graceful",
-                "colorScheme": "Nord",
-                "cursorShape": "vintage",
-                "font": 
-                {
-                    "face": "FiraCode Nerd Font Mono",
-                    "weight": "medium"
-                },
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "~/Studium"
-            },
-            {
-                "backgroundImage": "D:\\OneDrive\\Red_dimmed.png",
-                "backgroundImageStretchMode": "uniformToFill",
-                "closeOnExit": "graceful",
-                "colorScheme": "Nord",
-                "cursorShape": "vintage",
-                "experimental.retroTerminalEffect": false,
-                "font": 
-                {
-                    "face": "FiraCode Nerd Font Mono",
-                    "size": 12.0,
-                    "weight": "medium"
-                },
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
-                "historySize": 9001,
                 "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
-                "startingDirectory": "~/Studium"
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             }
         ]
     },
@@ -181,29 +168,6 @@
             "selectionBackground": "#585B70",
             "white": "#BAC2DE",
             "yellow": "#F9E2AF"
-        },
-        {
-            "background": "#2E3440",
-            "black": "#3B4252",
-            "blue": "#81A1C1",
-            "brightBlack": "#4C566A",
-            "brightBlue": "#81A1C1",
-            "brightCyan": "#8FBCBB",
-            "brightGreen": "#A3BE8C",
-            "brightPurple": "#B48EAD",
-            "brightRed": "#BF616A",
-            "brightWhite": "#ECEFF4",
-            "brightYellow": "#EBCB8B",
-            "cursorColor": "#81A1C1",
-            "cyan": "#88C0D0",
-            "foreground": "#D8DEE9",
-            "green": "#A3BE8C",
-            "name": "Nord",
-            "purple": "#B48EAD",
-            "red": "#BF616A",
-            "selectionBackground": "#434C5E",
-            "white": "#E5E9F0",
-            "yellow": "#EBCB8B"
         },
         {
             "background": "#282C34",
@@ -420,6 +384,7 @@
             "tab": 
             {
                 "background": "#1E1E2EFF",
+                "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
@@ -431,6 +396,9 @@
             "window": 
             {
                 "applicationTheme": "dark",
+                "experimental.rainbowFrame": false,
+                "frame": null,
+                "unfocusedFrame": null,
                 "useMica": false
             }
         }
