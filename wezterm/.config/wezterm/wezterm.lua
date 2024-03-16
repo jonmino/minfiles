@@ -41,9 +41,9 @@ config.font = wezterm.font_with_fallback({
 	{ family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1.25 },
 })
 config.adjust_window_size_when_changing_font_size = false
-config.font_size = 12.5
+config.font_size = 12
 config.line_height = 1
-config.window_background_opacity = 0.925
+config.window_background_opacity = 0.9
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 5000
 config.enable_scroll_bar = false
@@ -54,8 +54,8 @@ config.initial_cols = 120
 -- Visual Settings:
 -- inactive panes
 config.inactive_pane_hsb = {
-	saturation = 0.75,
-	brightness = 0.5,
+	saturation = 0.8,
+	brightness = 0.6,
 }
 -- Tab bar
 config.window_decorations = "INTEGRATED_BUTTONS | RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
