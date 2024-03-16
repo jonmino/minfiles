@@ -54,7 +54,7 @@ bindings.keys = {
 		action = act.ActivateKeyTable { name = 'resize_pane', one_shot = false, prevent_fallback = false, replace_current = false, until_unknown = false }
 	},
 	{ key = 't', mods = 'LEADER', action = act.SpawnTab 'CurrentPaneDomain' },
-	{ key = 'v', mods = 'CTRL',   action = act.PasteFrom 'Clipboard' },
+	{ key = 'p', mods = 'LEADER', action = act.PasteFrom 'Clipboard' },
 	{ key = 'x', mods = 'LEADER', action = act.CloseCurrentTab { confirm = false } },
 	{ key = 'w', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' } },
 	-- Prompt for a name to use for a new workspace and switch to it.

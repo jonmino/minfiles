@@ -6,21 +6,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 # Initialize ssh-agent with suppressed output
 {eval "$(ssh-agent -s)";} &>/dev/null
-
-# Integrations and setup of programs
-source ~/.config/wezterm/wezterm.sh # Shell integration
-source ~/.config/zsh/lib/func.zsh
-source ~/.config/zsh/lib/termintegration.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
 eval "$(zoxide init zsh --cmd cd)" # Initialize zoxide and replace cd command with it
 
-# Sourcing Theme
-source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
+source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-integrations
 
 # Basic Settings
-source ${XDG_CONFIG_HOME}/zsh/zsh-functions
-source ${XDG_CONFIG_HOME}/zsh/zsh-aliases
+source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-functions
+source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-aliases
+zle_highlight+=('paste:none')
+setopt COMBINING_CHARS # combine umlauts
+
+# Completion
+[ ! "$(find $ZDOTDIR/.zcompdump -mtime 1)" ] || compinit
+compinit -C
+zstyle ':completion:*' menu select # Menu selection of Tab complete
+zmodload zsh/complist
+_comp_options+=(globdots) # Include hidden files
+fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
 
 # vi mode
 bindkey -v
@@ -43,22 +45,6 @@ bindkey '^[OA' history-search-backward
 bindkey '^[OB' history-search-forward
 bindkey '^o' mambas # ctrl + q as shortcut keybinding
 
-CASE_SENSITIVE="true"
-HIST_STAMPS="yyyy-mm-dd"
-HISTSIZE=10000
-SAVEHIST=10000
-setopt COMBINING_CHARS # combine umlauts
-autoload -U compinit
-zstyle ':completion:*' menu select # Menu selection of Tab complete
-zmodload zsh/complist
-_comp_options+=(globdots) # Include hidden files
-fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
-zle_highlight=('paste:none')
-export ZSH_AUTOSUGGEST_STRATEGY=(
-    completion
-    history
-)
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/jomino/.local/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -77,6 +63,9 @@ if [ -f "/home/jomino/.local/conda/etc/profile.d/mamba.sh" ]; then
     . "/home/jomino/.local/conda/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+
+# Sourcing Theme
+source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
 
 # Load other Plugins
 source ~/minfiles/submodules/zsh-no-ps2/zsh-no-ps2.plugin.zsh
