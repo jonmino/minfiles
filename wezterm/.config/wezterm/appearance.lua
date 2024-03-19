@@ -27,6 +27,7 @@ local SOLID_RECTANGLE = "█"
 local SOLID_SLASH_LEFT = ""
 -- Slash right: "\ue0bc" -> 
 local SOLID_SLASH_RIGHT = ""
+local THIN_SPACE = "\u{200A}"
 
 -- Functions:
 -- -- This function returns the suggested title for a tab.
@@ -176,10 +177,10 @@ wezterm.on("update-status", function(window, pane)
 	-- Wezterm has a built-in nerd fonts
 	-- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
 	window:set_right_status(
-		wezterm.format { right_status_element(PEACH, CRUST, wezterm.nerdfonts.md_folder .. " " .. cwd .. " "), } ..
-		wezterm.format { right_status_element(SAPPHIRE, PEACH, wezterm.nerdfonts.md_clock .. " " .. time .. " ") } ..
-		wezterm.format { right_status_element(MAUVE, SAPPHIRE,
-			wezterm.nerdfonts.md_calendar .. " " .. date .. " " .. SOLID_LEFT_ARROW) }
+		wezterm.format { right_status_element(PEACH, CRUST, wezterm.nerdfonts.md_folder .. THIN_SPACE .. cwd .. THIN_SPACE), } ..
+		wezterm.format { right_status_element(BLUE, PEACH, wezterm.nerdfonts.md_clock .. THIN_SPACE .. time .. THIN_SPACE) } ..
+		wezterm.format { right_status_element(MAUVE, BLUE,
+			wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE .. SOLID_LEFT_ARROW) }
 	)
 end)
 return {
