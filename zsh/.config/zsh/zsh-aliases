@@ -13,6 +13,7 @@ alias la='eza -ah'
 alias ldir='eza -ah --only-dirs'
 alias lf='eza -ah --only-files'
 alias lt='eza -Th --level=2'
+alias ltt='eza -Tha --level=2'
 alias l='eza'
 alias y="yazicdonquit"
 alias lg="lazygit"

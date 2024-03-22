@@ -12,3 +12,8 @@ export SAVEHIST=10000
 # Forward Display to Windows
 export LIBGL_ALWAYS_INDIRECT=0
 export DISPLAY=:0
+
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    completion
+    history
+)
