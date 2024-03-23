@@ -16,6 +16,7 @@ end
 -- Basic Settings:
 -- change default domain to WSL
 config.default_domain = "WSL:Ubuntu"
+config.term = "wezterm"
 config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
 config.font = wezterm.font_with_fallback({
 	{
