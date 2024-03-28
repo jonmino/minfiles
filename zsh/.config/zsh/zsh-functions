@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 function mambas() {
   environments=$(eval mamba env list | rg -v '^#|base' | cut -d ' ' -f 1) #  | rg -v '^[\#|base]' | cut -d ' ' -f 1)
   items=("base" "deactivate" "$environments")

@@ -1,4 +1,9 @@
+#!/usr/bin/env zsh
 # Alias definitions
+
+# ZSH
+alias d='dirs -v' # List DirStack
+for index ({1..9}) alias "$index"="builtin cd +${index} > /dev/null"; unset index # directory stack
 
 #cd aliases
 alias ..='builtin cd ..'
@@ -7,7 +12,7 @@ alias ....='builtin cd ../../..'
 alias .4='builtin cd ../../../../'
 alias .5='builtin cd ../../../../..'
 
-# ls/k/nnn aliases
+# ls/eza aliases
 alias ll='eza -lah --git --icons=always --colour-scale=size'
 alias la='eza -ah'
 alias ldir='eza -ah --only-dirs'
@@ -15,9 +20,9 @@ alias lf='eza -ah --only-files'
 alias lt='eza -Th --level=2'
 alias ltt='eza -Tha --level=2'
 alias l='eza'
+
+# yazi
 alias y="yazicdonquit"
-alias lg="lazygit"
-alias bcd="builtin cd"
 
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
@@ -34,6 +39,9 @@ alias remake='make clean && make'
 # count files
 alias count='find . -type f | wc -l'
 
+# list files/dir by size
+alias dust='du -sh * | sort -hr'
+
 # copy with progress bar
 alias cpv='rsync -ah --info=progress2'
 
@@ -42,9 +50,12 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# git
-alias gits="git status -s"
-alias gitl="git lg"
+# Git
+alias gis="git status"
+alias gss="git status -s"
+alias gid="git diff"
+alias gilg="git lg"
+alias gsub="git submodule update --remote"
 
 # vim
 alias vim=nvim
@@ -53,7 +64,14 @@ alias vi=nvim
 # texlive
 alias updatetl="tlmgr update --self --all --reinstall-forcibly-removed"
 
+# File manipulation
+alias rm="rm -iv"
+alias cp="cp -iv"
+alias mv="mv -iv"
 
 # misc 
-alias rm='rm -i'
 alias update="zsh ~/minfiles/scripts/update.zsh"
+alias lg="lazygit"
+alias bcd="builtin cd"
+
+

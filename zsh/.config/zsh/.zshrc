@@ -9,13 +9,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 # Initialize ssh-agent with suppressed output
 {eval "$(ssh-agent -s)";} &>/dev/null
+
+# Zoxide
 eval "$(zoxide init zsh --cmd cd)" # Initialize zoxide and replace cd command with it
 
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-integrations
+# Load ZSH Settings
+source ${ZDOTDIR}/zsh-options
 
-# Basic Settings
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-functions
-source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-aliases
+# Load Configs
+source ${ZDOTDIR}/zsh-integrations
+source ${ZDOTDIR}/zsh-functions
+source ${ZDOTDIR}/zsh-aliases
 source /etc/zsh_command_not_found
 zle_highlight+=('paste:none')
 setopt COMBINING_CHARS # combine umlauts
