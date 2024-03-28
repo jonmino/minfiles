@@ -1,3 +1,6 @@
+# Is executed evertime an Interactive Shell is launched
+# Used to set up ways of interacting with ZSH
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -13,6 +16,7 @@ source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-integrations
 # Basic Settings
 source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-functions
 source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/zsh-aliases
+source /etc/zsh_command_not_found
 zle_highlight+=('paste:none')
 setopt COMBINING_CHARS # combine umlauts
 
@@ -23,6 +27,10 @@ zstyle ':completion:*' menu select # Menu selection of Tab complete
 zmodload zsh/complist
 _comp_options+=(globdots) # Include hidden files
 fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    completion
+    history
+)
 
 # vi mode
 bindkey -v
