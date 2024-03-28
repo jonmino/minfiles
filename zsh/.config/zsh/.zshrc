@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Is executed evertime an Interactive Shell is launched
 # Used to set up ways of interacting with ZSH
 
@@ -20,33 +21,11 @@ source ${ZDOTDIR}/zsh-options
 source ${ZDOTDIR}/zsh-integrations
 source ${ZDOTDIR}/zsh-functions
 source ${ZDOTDIR}/zsh-aliases
+source ${ZDOTDIR}/zsh-completion
+source ${ZDOTDIR}/zsh-vi-mode
 source /etc/zsh_command_not_found
 zle_highlight+=('paste:none')
-setopt COMBINING_CHARS # combine umlauts
 
-# Completion
-[ ! "$(find $ZDOTDIR/.zcompdump -mtime 1)" ] || compinit
-compinit -C
-zstyle ':completion:*' menu select # Menu selection of Tab complete
-zmodload zsh/complist
-_comp_options+=(globdots) # Include hidden files
-fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
-export ZSH_AUTOSUGGEST_STRATEGY=(
-    completion
-    history
-)
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-precmd_functions+=(_fix_cursor) # Change default Cursor
-
-# Use vim keys in tab complete menu: Broken?
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line

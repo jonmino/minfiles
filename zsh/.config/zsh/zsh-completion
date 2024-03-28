@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+# Setting up ZSH Completion
+[ ! "$(find $ZDOTDIR/.zcompdump -mtime 1)" ] || compinit
+compinit -C
+zstyle ':completion:*' menu select # Menu selection of Tab complete
+zmodload zsh/complist
+_comp_options+=(globdots) # Include hidden files
+fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    completion
+    history
+)
