@@ -14,6 +14,12 @@ fi
 # Zoxide
 eval "$(zoxide init zsh --cmd cd)" # Initialize zoxide and replace cd command with it
 
+# Sourcing Theme
+source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
+
+# Load dircolors
+eval "$(dircolors -b $ZDOTDIR/dircolors)"
+
 # Load ZSH Settings
 source ${ZDOTDIR}/zsh-options
 
@@ -26,6 +32,11 @@ source ${ZDOTDIR}/zsh-vi-mode
 source /etc/zsh_command_not_found
 zle_highlight+=('paste:none')
 
+# Find autosuggestion match from Completion then history
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    completion
+    history
+)
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -54,9 +65,6 @@ if [ -f "/home/jomino/.local/conda/etc/profile.d/mamba.sh" ]; then
     . "/home/jomino/.local/conda/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
-
-# Sourcing Theme
-source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
 
 # Load other Plugins
 source ~/minfiles/submodules/zsh-no-ps2/zsh-no-ps2.plugin.zsh
