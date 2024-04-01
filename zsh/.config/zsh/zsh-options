@@ -21,3 +21,4 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 
 # Misc
 setopt COMBINING_CHARS # combine umlauts
+skip_global_compinit=1 # Skips global compinit duh
