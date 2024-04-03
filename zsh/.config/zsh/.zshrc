@@ -63,6 +63,7 @@ fi
 # <<< conda initialize <<<
 
 # Load other Plugins
+source ~/minfiles/submodules/zsh-bd/bd.zsh
 source ~/minfiles/submodules/zsh-no-ps2/zsh-no-ps2.plugin.zsh
 source ~/minfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/minfiles/submodules/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
