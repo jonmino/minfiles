@@ -3,5 +3,6 @@
 source ${XDG_CONFIG_HOME:-$HOME/.config}/wezterm/wezterm.sh # Shell integration
 source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/lib/func.zsh
 source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/lib/termintegration.zsh
+source ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/lib/clipboard.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
