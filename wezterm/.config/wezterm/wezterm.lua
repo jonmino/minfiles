@@ -23,7 +23,7 @@ config.font = wezterm.font_with_fallback({
 		family = "MonaspiceNe NFM Medium",
 		weight = "Regular",
 		italic = false,
-		scale = 1.25, -- The code below activates font ligatures
+		scale = 1, -- The code below activates font ligatures
 		harfbuzz_features = {
 			"liga=1",
 			"dlig=1",
@@ -38,11 +38,11 @@ config.font = wezterm.font_with_fallback({
 			"ss07=1",
 			"ss08=1", }
 	},
-	{ family = "MesloLGS NF",                             scale = 1.25 },
-	{ family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1.25 },
+	{ family = "MesloLGS NF",                             scale = 1 },
+	{ family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1 },
 })
 config.adjust_window_size_when_changing_font_size = false
-config.font_size = 12
+config.font_size = 14
 config.line_height = 1
 config.window_background_opacity = 0.9
 config.window_close_confirmation = "AlwaysPrompt"
