@@ -73,5 +73,5 @@ alias mv="mv -iv"
 alias update="zsh ~/minfiles/scripts/update.zsh"
 alias lg="lazygit"
 alias bcd="builtin cd"
-
+alias pse="zsh ~/minfiles/scripts/pse.zsh"
 
