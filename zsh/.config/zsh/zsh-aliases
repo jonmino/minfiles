@@ -13,13 +13,16 @@ alias .4='builtin cd ../../../../'
 alias .5='builtin cd ../../../../..'
 
 # ls/eza aliases
+alias l='eza'
 alias ll='eza -lah --git --icons=always --colour-scale=size'
+alias lll='eza -lah --git --icons=always --colour-scale=size --time-style=long-iso'
 alias la='eza -ah'
-alias ldir='eza -ah --only-dirs'
-alias lf='eza -ah --only-files'
+alias lD='eza -lh --only-dirs'
+alias lDD='eza -lah --only-dirs'
+alias lF='eza -lh --only-files'
+alias lFF='eza -lah --only-files'
 alias lt='eza -Th --level=2'
 alias ltt='eza -Tha --level=2'
-alias l='eza'
 
 # yazi
 alias y="yazicdonquit"
