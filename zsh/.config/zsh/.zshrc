@@ -67,6 +67,8 @@ source ~/minfiles/submodules/zsh-bd/bd.zsh
 source ~/minfiles/submodules/zsh-no-ps2/zsh-no-ps2.plugin.zsh
 source ~/minfiles/submodules/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/minfiles/submodules/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source ~/minfiles/submodules/universalarchive.zsh
+source ~/minfiles/submodules/universalextract.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
