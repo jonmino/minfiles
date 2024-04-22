@@ -60,3 +60,8 @@ function profileZSH() {
   zprof
 }
 zle -N profileZSH
+
+function cpv() {
+    rsync -brav -hhh --backup-dir="/tmp/rsync-${USERNAME}" -e /dev/null --progress "$@"
+}
+compdef _files cpv

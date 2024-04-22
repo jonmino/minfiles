@@ -42,8 +42,12 @@ alias count='find . -type f | wc -l'
 # list files/dir by size
 alias dust='du -sh * | sort -hr'
 
-# copy with progress bar
-alias cpv='rsync -ah --info=progress2'
+# rsync aliases
+alias rsync-copy="rsync -avz --progress -h"
+alias rsync-move="rsync -avz --progress -h --delete-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-update="rsync -avzu --delete --progress -h"
+
 
 ## Colorize the grep command output
 alias grep='grep --color=auto'

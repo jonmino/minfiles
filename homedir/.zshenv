@@ -26,7 +26,8 @@ export SAVEHIST=10000
 # Default applications
 export EDITOR=nvim
 export BROWSER=firefox
-export PAGER=less
+export PAGER=most
+export MANPAGER=most
 
 # PATH
 export PATH="$HOME/.local/bin:$PATH"

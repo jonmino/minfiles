@@ -3,6 +3,7 @@
 
 # Source more completions
 fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
+fpath=(~/minfiles/zsh/.config/zsh/completions $fpath)
 
 zmodload zsh/complist #Should be called before compinit
 
