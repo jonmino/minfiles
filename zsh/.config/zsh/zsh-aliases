@@ -29,6 +29,7 @@ alias y="yazicdonquit"
 
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
+alias shutdown="wsl.exe --shutdown"
 
 # configs
 alias zshconf="nvim ~/.config/zsh/.zshrc"
