@@ -16,3 +16,6 @@
 [submodule "submodules/zsh-bd"]
 	path = submodules/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
+[submodule "yazi/.config/yazi/flavors"]
+	path = yazi/.config/yazi/flavors
+	url = git@github.com:yazi-rs/flavors.git

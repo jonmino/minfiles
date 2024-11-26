@@ -21,9 +21,9 @@ function mambas() {
 zle -N mambas
 
 function yazicdonquit() {
-    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-    ~/Downloads/yazi/target/release/yazi . --cwd-file="$tmp"
-    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    local tmp="$(mktemp -t "yazi-cwd.XXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
         builtin cd -- "$cwd"
     fi
     rm -f -- "$tmp"
