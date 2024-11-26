@@ -1,10 +1,6 @@
 #!/usr/bin/env zsh
 # Alias definitions
 
-# ZSH
-alias d='dirs -v' # List DirStack
-for index ({1..9}) alias "$index"="builtin cd +${index} > /dev/null"; unset index # directory stack
-
 #cd aliases
 alias ..='builtin cd ..'
 alias ...='builtin cd ../..'
@@ -82,4 +78,3 @@ alias update="zsh ~/minfiles/scripts/update.zsh"
 alias lg="lazygit"
 alias bcd="builtin cd"
 alias pse="zsh ~/minfiles/scripts/pse.zsh"
-

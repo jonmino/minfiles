@@ -73,3 +73,17 @@ function apt-list-packages {
   sort -n | \
   awk '{print $1" "$2}'
 }
+
+# Search cashed apt Packages with fzf
+function apt-search {
+apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
+}
+
+# DirStack
+alias d='dirs -v' # List DirStack
+for index ({1..9}) alias "$index"="builtin cd +${index} > /dev/null"; unset index # directory stack
+
+fpop() {
+    # Only work with alias d defined in zsh-aliases line 5-6
+    d | fzf --height="20%" | cut -f 1 | source /dev/stdin
+}
