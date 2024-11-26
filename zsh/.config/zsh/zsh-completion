@@ -21,7 +21,7 @@ bindkey -M menuselect '^xu' undo                           # Undo
 
 # Load completion function and execute. Only update Cache once a day
 autoload -U compinit 
-if [ "$(find $ZDOTDIR/.zcompdump -mmin 360)" ] ; then # if modified in last 6h
+if [ "$(fd --hidden --changed-before 6h --base-directory $ZDOTDIR .zcompdump)" ] ; then # Update Compdump every 6h
     compinit -d "$ZDOTDIR/.zcompdump" # XDG DATA/CACHE?
 else
     compinit -C -d "$ZDOTDIR/.zcompdump"
