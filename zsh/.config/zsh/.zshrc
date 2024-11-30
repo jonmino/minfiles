@@ -20,6 +20,9 @@ source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
 # Load dircolors
 eval "$(dircolors -b $ZDOTDIR/dircolors)"
 
+# Homebrew -> Needs to be this far up so installed applications are available
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Load ZSH Settings
 source ${ZDOTDIR}/zsh-options
 
@@ -42,6 +45,9 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
 bindkey '^[OA' history-search-backward
 bindkey '^[OB' history-search-forward
 bindkey '^o' mambas # ctrl + q as shortcut keybinding
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
