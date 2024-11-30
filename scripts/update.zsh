@@ -10,6 +10,10 @@ while true; do
             sudo apt-get autoclean
             sudo apt-get upgrade
             sudo apt-get autoremove
+            brew update
+            brew outdated
+            brew upgrade
+            brew cleanup
             mamba upgrade all
             mamba clean --all --yes
             tlmgr update --self --all --reinstall-forcibly-removed

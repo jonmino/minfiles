@@ -31,6 +31,10 @@ sudo ./scripts/install_zsh.sh
 ```
 
 ### Install Dependencies
+The install script uses Homebrew to get up to date versions of certain tools, so that needs to be installed first.
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 This repository contains configurations for a few tools and implements those using aliases and sometimes even overrites defaults. To not run into command not found erros, install the required packages using
 ```
 sudo ./scripts/install_dependencies.zsh
