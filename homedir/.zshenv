@@ -29,6 +29,14 @@ export BROWSER=firefox
 export PAGER=most
 export MANPAGER=most
 
+# FZF
+export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'
+export FZF_DEFAULT_OPTS="-i --height=50% --info=inline --border=rounded --layout=reverse \
+--pointer='→' --marker='★' --prompt='>' \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--multi"
+
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 
