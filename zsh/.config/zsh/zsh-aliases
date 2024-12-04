@@ -58,7 +58,7 @@ alias gis="git status"
 alias gss="git status -s"
 alias gid="git diff"
 alias gilg="git lg"
-alias gsub="git submodule update --remote"
+alias gsub="git submodule update --remote --rebase"
 
 # vim
 alias vim=nvim
