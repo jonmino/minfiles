@@ -59,8 +59,8 @@ config.inactive_pane_hsb = {
 	brightness = 0.6,
 }
 -- Tab bar
-config.window_decorations = "INTEGRATED_BUTTONS | RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
-config.integrated_title_button_style = "Windows"          -- Styles = Windows, MacOSNative, Gnome
+config.window_decorations = "RESIZE"             -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
+config.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false

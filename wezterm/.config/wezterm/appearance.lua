@@ -45,6 +45,42 @@ local function tab_title(tab_info)
 	return tab_info.active_pane.title
 end
 
+-- Current working directory
+local shortcwd = function(fileurl)
+	-- Nothing a little regex can't fix
+	local filestr = fileurl.file_path
+	return string.gsub(filestr, "(.*[/\\])(.*)", "%2")
+end
+
+local process_icons = {
+	['docker'] = wezterm.nerdfonts.linux_docker,
+	['docker-compose'] = wezterm.nerdfonts.linux_docker,
+	['psql'] = wezterm.nerdfonts.dev_postgresql,
+	['kuberlr'] = wezterm.nerdfonts.linux_docker,
+	['kubectl'] = wezterm.nerdfonts.linux_docker,
+	['stern'] = wezterm.nerdfonts.linux_docker,
+	['nvim'] = wezterm.nerdfonts.custom_vim,
+	['make'] = wezterm.nerdfonts.seti_makefile,
+	['vim'] = wezterm.nerdfonts.dev_vim,
+	['go'] = wezterm.nerdfonts.seti_go,
+	['zsh'] = wezterm.nerdfonts.dev_terminal,
+	['bash'] = wezterm.nerdfonts.cod_terminal_bash,
+	['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	['cargo'] = wezterm.nerdfonts.dev_rust,
+	['sudo'] = wezterm.nerdfonts.fa_hashtag,
+	['lazydocker'] = wezterm.nerdfonts.linux_docker,
+	['git'] = wezterm.nerdfonts.dev_git,
+	['lua'] = wezterm.nerdfonts.seti_lua,
+	['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
+	['curl'] = wezterm.nerdfonts.mdi_flattr,
+	['gh'] = wezterm.nerdfonts.dev_github_badge,
+	['ruby'] = wezterm.nerdfonts.cod_ruby,
+	['pwsh'] = wezterm.nerdfonts.seti_powershell,
+	['node'] = wezterm.nerdfonts.dev_nodejs_small,
+	['dotnet'] = wezterm.nerdfonts.md_language_csharp,
+}
+
 local function button_style(bg, fg)
 	return wezterm.format {
 		{ Background = { Color = fg } },
@@ -78,49 +114,59 @@ local function right_status_element(fg, next, text)
 		{ Foreground = { Color = CRUST } },
 		{ Text = text }
 end
-wezterm.on(
-	'format-tab-title',
-	function(tab, tabs, panes, config, hover, max_width)
-		local edge_background = CRUST
-		local LEFT_SEPERATOR = SOLID_SLASH_LEFT .. SOLID_RECTANGLE
-		local RIGHT_SEPERATOR = SOLID_RECTANGLE .. SOLID_SLASH_RIGHT
-		local background
-		local foreground
-		if tab.is_active then
-			background = BASE
-			foreground = PEACH
-		elseif hover then
-			background = SURFACE0
-			foreground = SKY
-		else
-			background = CRUST
-			foreground = SAPPHIRE
-		end
-
-		local edge_foreground = background
-
-		local title = tab_title(tab)
-		-- ensure that the titles fit in the available space,
-		-- and that we have room for the edges.
-		title = wezterm.truncate_right(title, max_width - 6)
-		local number = wezterm.truncate_right(tostring(tab.tab_index + 1), max_width - 4)
-
-		return {
-			{ Background = { Color = edge_background } },
-			{ Foreground = { Color = edge_foreground } },
-			{ Text = LEFT_SEPERATOR },
-			{ Background = { Color = background } },
-			{ Foreground = { Color = foreground } },
-			{ Text = title },
-			{ Background = { Color = foreground } },
-			{ Foreground = { Color = background } },
-			{ Text = RIGHT_SEPERATOR },
-			{ Text = number },
-			{ Background = { Color = edge_background } },
-			{ Foreground = { Color = foreground } },
-			{ Text = SOLID_SLASH_RIGHT },
-		}
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+	local edge_background = CRUST
+	local LEFT_SEPERATOR = SOLID_SLASH_LEFT .. SOLID_RECTANGLE
+	local RIGHT_SEPERATOR = SOLID_RECTANGLE .. SOLID_SLASH_RIGHT
+	local background
+	local foreground
+	if tab.is_active then
+		background = BASE
+		foreground = PEACH
+	elseif hover then
+		background = SURFACE0
+		foreground = SKY
+	else
+		background = CRUST
+		foreground = SAPPHIRE
 	end
+
+	local edge_foreground = background
+
+	local has_unseen_output = false
+	local is_zoomed = false
+
+	for _, pane in ipairs(panes) do
+		if not tab.is_active and pane.has_unseen_output then
+			has_unseen_output = true
+		end
+		if pane.is_zoomed then
+			is_zoomed = true
+		end
+	end
+
+	local title = tab_title(tab)
+	-- ensure that the titles fit in the available space,
+	-- and that we have room for the edges.
+	title = wezterm.truncate_right(title, max_width - 6)
+	local number = wezterm.truncate_right(tostring(tab.tab_index + 1), max_width - 4)
+
+	return {
+		{ Background = { Color = edge_background } },
+		{ Foreground = { Color = edge_foreground } },
+		{ Text = LEFT_SEPERATOR },
+		{ Background = { Color = background } },
+		{ Foreground = { Color = foreground } },
+		{ Text = title },
+		{ Background = { Color = foreground } },
+		{ Foreground = { Color = background } },
+		{ Text = RIGHT_SEPERATOR },
+		{ Text = number },
+		{ Background = { Color = edge_background } },
+		{ Foreground = { Color = foreground } },
+		{ Text = SOLID_SLASH_RIGHT },
+	}
+end
 )
 
 -- Right Stauts
@@ -139,12 +185,6 @@ wezterm.on("update-status", function(window, pane)
 		stat_color = MAUVE
 	end
 
-	-- Current working directory
-	local shortcwd = function(fileurl)
-		-- Nothing a little regex can't fix
-		local filestr = fileurl.file_path
-		return string.gsub(filestr, "(.*[/\\])(.*)", "%2")
-	end
 	-- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l). Not a big deal, but check in case
 	local cwd = pane:get_current_working_dir()
 	cwd = cwd and shortcwd(cwd) or ""
@@ -180,7 +220,7 @@ wezterm.on("update-status", function(window, pane)
 		wezterm.format { right_status_element(PEACH, CRUST, wezterm.nerdfonts.md_folder .. THIN_SPACE .. cwd .. THIN_SPACE), } ..
 		wezterm.format { right_status_element(BLUE, PEACH, wezterm.nerdfonts.md_clock .. THIN_SPACE .. time .. THIN_SPACE) } ..
 		wezterm.format { right_status_element(MAUVE, BLUE,
-			wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE .. SOLID_LEFT_ARROW) }
+			wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE) }
 	)
 end)
 return {
