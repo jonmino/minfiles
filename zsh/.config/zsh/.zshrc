@@ -42,9 +42,9 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
 )
 
 # Keybindings
-bindkey '^[OA' history-search-backward
-bindkey '^[OB' history-search-forward
-bindkey '^o' mambas # ctrl + q as shortcut keybinding
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+bindkey '^O' mambas # ctrl + o as shortcut keybinding
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)

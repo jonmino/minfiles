@@ -21,7 +21,7 @@ export HISTFILE=$XDG_DATA_HOME/zsh_history
 export CASE_SENSITIVE="true"
 export HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=10000
-export SAVEHIST=10000
+export SAVEHIST=9999 # Needs to be smaller than HISTSIZE
 
 # Default applications
 export EDITOR=nvim
