@@ -39,14 +39,9 @@ This repository contains configurations for a few tools and implements those usi
 ```
 sudo ./scripts/install_dependencies.zsh
 ```
-To apply the configuration for Zsh we need to symlink the .zshenv file first:
+To apply the configuration everyhting can be symlinked to the correct place by running:
 ```
-ln -s ~/minfiles/.zshenv ~/.zshenv
-```
-This will export a few system variables and redefine some defaults.
-After that everyhting can be symlinked to the correct place by running:
-```
-stow */
+stow .homedir
 ```
 ### Further commands that need to be run:
 Apply the catppuccin theme to fast-syntax-highlighting

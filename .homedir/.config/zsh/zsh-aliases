@@ -28,10 +28,11 @@ alias reveal="explorer.exe ." # Reveal current dir in File explorer
 alias shutdown="wsl.exe --shutdown"
 
 # configs
-alias zshconf="nvim ~/.config/zsh/.zshrc"
+alias zshconf="nvim ~/minfiles/.homedir/.config/zsh/.zshrc"
+alias zshenv="nvim ~/minfiles/.homedir/.zshenv"
 alias updateconf="nvim ~/minfiles/scripts/update.zsh"
-alias p10kconf="nvim ~/.config/zsh/.p10k.zsh"
-alias aliasconf="nvim ~/.config/zsh/zsh-aliases" # <- this file
+alias p10kconf="nvim ~/minfiles/.homedir/.config/zsh/.p10k.zsh"
+alias aliasconf="nvim ~/minfiles/.homedir/.config/zsh/zsh-aliases" # <- this file
 
 # make
 alias remake='make clean && make'
