@@ -1,5 +1,5 @@
 [user]
-	name = jomino
+	name = Jonas Minor
 	email = github@nc.seltsam.net
 [core]
 	editor = nvim
@@ -16,3 +16,5 @@
 [push]
 	autoSetupRemote = true
 	default = simple
+[init]
+	defaultBranch = main
