@@ -29,6 +29,30 @@ local SOLID_SLASH_LEFT = ""
 local SOLID_SLASH_RIGHT = ""
 local THIN_SPACE = "\u{200A}"
 
+local process_icons = {
+	['nvim'] = wezterm.nerdfonts.custom_vim,
+	['make'] = wezterm.nerdfonts.seti_makefile,
+	['vim'] = wezterm.nerdfonts.dev_vim,
+	['zsh'] = wezterm.nerdfonts.dev_terminal,
+	['bash'] = wezterm.nerdfonts.cod_terminal_bash,
+	['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	['sudo'] = wezterm.nerdfonts.fa_hashtag,
+	['git'] = wezterm.nerdfonts.dev_git,
+	['lua'] = wezterm.nerdfonts.seti_lua,
+	['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
+	['curl'] = wezterm.nerdfonts.mdi_flattr,
+	['node'] = wezterm.nerdfonts.dev_nodejs_small,
+	['dotnet'] = wezterm.nerdfonts.md_language_csharp,
+	['lazygit'] = wezterm.nerdfonts.dev_git,
+	['lg'] = wezterm.nerdfonts.dev_git,
+	['Yazi'] = wezterm.nerdfonts.md_folder,
+	['mamba'] = wezterm.nerdfonts.md_snake,
+	['python'] = wezterm.nerdfonts.md_language_python,
+	['ipython'] = wezterm.nerdfonts.md_language_python
+}
+
+
 -- Functions:
 -- -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
@@ -42,7 +66,14 @@ local function tab_title(tab_info)
 	end
 	-- Otherwise, use the title from the active pane
 	-- in that tab
-	return tab_info.active_pane.title
+	title = tab_info.active_pane.title
+	local icon = process_icons[title]
+	if icon then
+		icon = icon .. ' '
+	else
+		icon = ''
+	end
+	return icon .. title
 end
 
 -- Current working directory
@@ -51,35 +82,6 @@ local shortcwd = function(fileurl)
 	local filestr = fileurl.file_path
 	return string.gsub(filestr, "(.*[/\\])(.*)", "%2")
 end
-
-local process_icons = {
-	['docker'] = wezterm.nerdfonts.linux_docker,
-	['docker-compose'] = wezterm.nerdfonts.linux_docker,
-	['psql'] = wezterm.nerdfonts.dev_postgresql,
-	['kuberlr'] = wezterm.nerdfonts.linux_docker,
-	['kubectl'] = wezterm.nerdfonts.linux_docker,
-	['stern'] = wezterm.nerdfonts.linux_docker,
-	['nvim'] = wezterm.nerdfonts.custom_vim,
-	['make'] = wezterm.nerdfonts.seti_makefile,
-	['vim'] = wezterm.nerdfonts.dev_vim,
-	['go'] = wezterm.nerdfonts.seti_go,
-	['zsh'] = wezterm.nerdfonts.dev_terminal,
-	['bash'] = wezterm.nerdfonts.cod_terminal_bash,
-	['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	['cargo'] = wezterm.nerdfonts.dev_rust,
-	['sudo'] = wezterm.nerdfonts.fa_hashtag,
-	['lazydocker'] = wezterm.nerdfonts.linux_docker,
-	['git'] = wezterm.nerdfonts.dev_git,
-	['lua'] = wezterm.nerdfonts.seti_lua,
-	['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
-	['curl'] = wezterm.nerdfonts.mdi_flattr,
-	['gh'] = wezterm.nerdfonts.dev_github_badge,
-	['ruby'] = wezterm.nerdfonts.cod_ruby,
-	['pwsh'] = wezterm.nerdfonts.seti_powershell,
-	['node'] = wezterm.nerdfonts.dev_nodejs_small,
-	['dotnet'] = wezterm.nerdfonts.md_language_csharp,
-}
 
 local function button_style(bg, fg)
 	return wezterm.format {
