@@ -30,28 +30,27 @@ local SOLID_SLASH_RIGHT = ""
 local THIN_SPACE = "\u{200A}"
 
 local process_icons = {
-	['nvim'] = wezterm.nerdfonts.custom_vim,
-	['make'] = wezterm.nerdfonts.seti_makefile,
-	['vim'] = wezterm.nerdfonts.dev_vim,
-	['zsh'] = wezterm.nerdfonts.dev_terminal,
-	['bash'] = wezterm.nerdfonts.cod_terminal_bash,
-	['btm'] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	['htop'] = wezterm.nerdfonts.mdi_chart_donut_variant,
-	['sudo'] = wezterm.nerdfonts.fa_hashtag,
-	['git'] = wezterm.nerdfonts.dev_git,
-	['lua'] = wezterm.nerdfonts.seti_lua,
-	['wget'] = wezterm.nerdfonts.mdi_arrow_down_box,
-	['curl'] = wezterm.nerdfonts.mdi_flattr,
-	['node'] = wezterm.nerdfonts.dev_nodejs_small,
-	['dotnet'] = wezterm.nerdfonts.md_language_csharp,
-	['lazygit'] = wezterm.nerdfonts.dev_git,
-	['lg'] = wezterm.nerdfonts.dev_git,
-	['Yazi'] = wezterm.nerdfonts.md_folder,
-	['mamba'] = wezterm.nerdfonts.md_snake,
-	['python'] = wezterm.nerdfonts.md_language_python,
-	['ipython'] = wezterm.nerdfonts.md_language_python
+	["nvim"] = wezterm.nerdfonts.custom_vim,
+	["make"] = wezterm.nerdfonts.seti_makefile,
+	["vim"] = wezterm.nerdfonts.dev_vim,
+	["zsh"] = wezterm.nerdfonts.dev_terminal,
+	["bash"] = wezterm.nerdfonts.cod_terminal_bash,
+	["btm"] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
+	["sudo"] = wezterm.nerdfonts.fa_hashtag,
+	["git"] = wezterm.nerdfonts.dev_git,
+	["lua"] = wezterm.nerdfonts.seti_lua,
+	["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
+	["curl"] = wezterm.nerdfonts.mdi_flattr,
+	["node"] = wezterm.nerdfonts.dev_nodejs_small,
+	["dotnet"] = wezterm.nerdfonts.md_language_csharp,
+	["lazygit"] = wezterm.nerdfonts.dev_git,
+	["lg"] = wezterm.nerdfonts.dev_git,
+	["Yazi"] = wezterm.nerdfonts.md_folder,
+	["mamba"] = wezterm.nerdfonts.md_snake,
+	["python"] = wezterm.nerdfonts.md_language_python,
+	["ipython"] = wezterm.nerdfonts.md_language_python,
 }
-
 
 -- Functions:
 -- -- This function returns the suggested title for a tab.
@@ -69,9 +68,9 @@ local function tab_title(tab_info)
 	title = tab_info.active_pane.title
 	local icon = process_icons[title]
 	if icon then
-		icon = icon .. ' '
+		icon = icon .. " "
 	else
-		icon = ''
+		icon = ""
 	end
 	return icon .. title
 end
@@ -84,18 +83,18 @@ local shortcwd = function(fileurl)
 end
 
 local function button_style(bg, fg)
-	return wezterm.format {
+	return wezterm.format({
 		{ Background = { Color = fg } },
 		{ Foreground = { Color = bg } },
 		{ Text = SOLID_RIGHT_ARROW },
 		{ Background = { Color = bg } },
 		{ Foreground = { Color = fg } },
 		{ Text = SOLID_RIGHT_ARROW },
-	}
+	})
 end
 
 local function new_tab(bg, text)
-	return wezterm.format {
+	return wezterm.format({
 		{ Background = { Color = CRUST } },
 		{ Foreground = { Color = bg } },
 		{ Text = SOLID_SLASH_LEFT },
@@ -105,18 +104,15 @@ local function new_tab(bg, text)
 		{ Background = { Color = CRUST } },
 		{ Foreground = { Color = bg } },
 		{ Text = SOLID_SLASH_RIGHT },
-	}
+	})
 end
 
 local function right_status_element(fg, next, text)
-	return { Background = { Color = next } },
-		{ Foreground = { Color = fg } },
-		{ Text = SOLID_LEFT_ARROW },
-		{ Background = { Color = fg } },
-		{ Foreground = { Color = CRUST } },
-		{ Text = text }
+	return { Background = { Color = next } }, { Foreground = { Color = fg } }, { Text = SOLID_LEFT_ARROW }, {
+		Background = { Color = fg },
+	}, { Foreground = { Color = CRUST } }, { Text = text }
 end
-wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local edge_background = CRUST
 	local LEFT_SEPERATOR = SOLID_SLASH_LEFT .. SOLID_RECTANGLE
 	local RIGHT_SEPERATOR = SOLID_RECTANGLE .. SOLID_SLASH_RIGHT
@@ -168,8 +164,7 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
 		{ Foreground = { Color = foreground } },
 		{ Text = SOLID_SLASH_RIGHT },
 	}
-end
-)
+end)
 
 -- Right Stauts
 wezterm.on("update-status", function(window, pane)
@@ -196,7 +191,7 @@ wezterm.on("update-status", function(window, pane)
 	local date = wezterm.strftime("%Y-%m-%d")
 
 	-- Left status (left of the tab line)
-	window:set_left_status(wezterm.format {
+	window:set_left_status(wezterm.format({
 		{ Background = { Color = CRUST } },
 		{ Foreground = { Color = stat_color } },
 		{ Text = SOLID_RECTANGLE },
@@ -213,16 +208,21 @@ wezterm.on("update-status", function(window, pane)
 		{ Background = { Color = CRUST } },
 		{ Foreground = { Color = stat_color } },
 		{ Text = SOLID_SLASH_RIGHT },
-	})
+	}))
 
 	-- Right status
 	-- Wezterm has a built-in nerd fonts
 	-- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
 	window:set_right_status(
-		wezterm.format { right_status_element(PEACH, CRUST, wezterm.nerdfonts.md_folder .. THIN_SPACE .. cwd .. THIN_SPACE), } ..
-		wezterm.format { right_status_element(BLUE, PEACH, wezterm.nerdfonts.md_clock .. THIN_SPACE .. time .. THIN_SPACE) } ..
-		wezterm.format { right_status_element(MAUVE, BLUE,
-			wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE) }
+		wezterm.format({
+			right_status_element(PEACH, CRUST, wezterm.nerdfonts.md_folder .. THIN_SPACE .. cwd .. THIN_SPACE),
+		})
+			.. wezterm.format({
+				right_status_element(BLUE, PEACH, wezterm.nerdfonts.md_clock .. THIN_SPACE .. time .. THIN_SPACE),
+			})
+			.. wezterm.format({
+				right_status_element(MAUVE, BLUE, wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE),
+			})
 	)
 end)
 return {
@@ -235,5 +235,5 @@ return {
 		window_maximize_hover = button_style(SURFACE0, SAPPHIRE),
 		window_close = button_style(CRUST, RED),
 		window_close_hover = button_style(SURFACE0, MAROON),
-	}
+	},
 }

@@ -36,9 +36,10 @@ config.font = wezterm.font_with_fallback({
 			"ss05=1",
 			"ss06=1",
 			"ss07=1",
-			"ss08=1", }
+			"ss08=1",
+		},
 	},
-	{ family = "MesloLGS NF",                             scale = 1 },
+	{ family = "MesloLGS NF", scale = 1 },
 	{ family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1 },
 })
 config.adjust_window_size_when_changing_font_size = false
@@ -59,7 +60,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.6,
 }
 -- Tab bar
-config.window_decorations = "RESIZE"             -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
+config.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
 config.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
