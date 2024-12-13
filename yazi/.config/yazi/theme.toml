@@ -10,3 +10,11 @@
 use = "catppuccin-mocha"
 
 # : }}}
+
+# : Status {{{
+
+[status]
+separator_open  = ""
+separator_close = ""
+
+# : }}}
