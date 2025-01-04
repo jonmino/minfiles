@@ -48,3 +48,14 @@ Apply the catppuccin theme to fast-syntax-highlighting
 ```
 fast-theme XDG:catppuccin-mocha
 ```
+
+### Enable VPN Connections
+Due to WSL2 being a bit difficult with networking some settings have to be adjusted for VPN support.
+Copy the files `wsl.conf` and `resolv.conf` from the `minfiles/other` to `/etc`.
+They configure settings of the distribution. Copy `.wslconfig` to `%UserProfile%` in windows
+to enable the mirrored Networking mode for all WSL2 distributions. Also run the following command
+with admin priviliges in PowerShell to allow inbound connections:
+```
+New-NetFirewallHyperVRule -Name "MyWebServer" -DisplayName "My Web Server" -Direction Inbound -VMCreatorId '{40E0AC32-46A5-438A-A0B2-2B479E8F2E90}' -Protocol TCP -LocalPorts 80
+```
+You can read more about the why here: https://learn.microsoft.com/en-us/windows/wsl/networking#mirrored-mode-networking
