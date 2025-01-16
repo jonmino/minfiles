@@ -4,6 +4,4 @@ changeps1: false # Disable environment in Prompt as it is handled by p10k
 auto_activate_base: false
 channels: # Configure default Channels
   - conda-forge
-  - defaults
   # - bioconda
-  # - anaconda
