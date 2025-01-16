@@ -10,6 +10,7 @@ brew update
 brew outdated
 brew upgrade
 brew cleanup
+mamba self-update
 mamba upgrade all
 mamba clean --all --yes
 tlmgr update --self --all --reinstall-forcibly-removed
