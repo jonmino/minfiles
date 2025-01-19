@@ -1,21 +1,21 @@
 #!/usr/bin/env zsh
 function mambas() {
-  environments=$(mamba env list | tail -n +4 | cut -d ' ' -f 3)
-  items=("base" "deactivate" "$environments")
-  # config for fuzzy finder selection window
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt="🐍 Mamba Config >> " --height=50% --info=inline --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-  mambastatus="Changed Nothing"
-  elif [[ $config == "deactivate" ]]; then
-    mamba deactivate
-  mambastatus="Deactivated"
-  else
-    mamba activate "$config"
-  mambastatus="Activated $config"
-  fi
-  printf "%s\n" "$mambastatus"
-  echo # final newline to show status in shell
-  zle accept-line
+    environments=$(mamba env list | tail -n +4 | cut -d ' ' -f 3)
+    items=("base" "deactivate" "$environments")
+    # config for fuzzy finder selection window
+    config=$(printf "%s\n" "${items[@]}" | fzf --prompt="🐍 Mamba Config >> " --height=50% --info=inline --layout=reverse --border --exit-0)
+    if [[ -z $config ]]; then
+        mambastatus="Changed Nothing"
+    elif [[ $config == "deactivate" ]]; then
+        mamba deactivate
+        mambastatus="Deactivated"
+    else
+        mamba activate "$config"
+        mambastatus="Activated $config"
+    fi
+    printf "%s\n" "$mambastatus"
+    echo # final newline to show status in shell
+    zle accept-line
 }
 zle -N mambas
 
@@ -30,33 +30,33 @@ function yazicdonquit() {
 
 # Change cursor shape for different vi modes.
 vi_cursor_mode() {
-  cursor_block='\e[2 q'
-  cursor_beam='\e[6 q'
-  function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] ||
-      [[ $1 = 'block' ]]; then
-      echo -ne $cursor_block
-    elif [[ ${KEYMAP} == main ]] ||
-      [[ ${KEYMAP} == viins ]] ||
-      [[ ${KEYMAP} = '' ]] ||
-      [[ $1 = 'beam' ]]; then
-      echo -ne $cursor_beam
-    fi
-  }
+    cursor_block='\e[2 q'
+    cursor_beam='\e[6 q'
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
 
-  zle-line-init() {
-    echo -ne $cursor_beam
-  }
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
 
-  zle -N zle-keymap-select
-  zle -N zle-line-init
+    zle -N zle-keymap-select
+    zle -N zle-line-init
 }
 
 
 function profileZSH() {
-  zmodload zsh/zprof
-  source ~/.config/zsh/.zshrc
-  zprof
+    zmodload zsh/zprof
+    source ~/.config/zsh/.zshrc
+    zprof
 }
 zle -N profileZSH
 
@@ -67,15 +67,15 @@ compdef _files cpv
 
 # List apt packages by size
 function apt-list-packages {
-  dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | \
-  grep -v deinstall | \
-  sort -n | \
-  awk '{print $1" "$2}'
+    dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | \
+    grep -v deinstall | \
+    sort -n | \
+    awk '{print $1" "$2}'
 }
 
 # Search cashed apt Packages with fzf
 function apt-search {
-apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
+    apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
 }
 
 # DirStack
