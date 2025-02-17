@@ -10,7 +10,7 @@ local config = {}
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-	config = wezterm.config_builder()
+    config = wezterm.config_builder()
 end
 
 -- Basic Settings:
@@ -19,28 +19,28 @@ config.default_domain = "WSL:Ubuntu"
 config.term = "wezterm"
 config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
 config.font = wezterm.font_with_fallback({
-	{
-		family = "MonaspiceNe NFM Medium",
-		weight = "Regular",
-		italic = false,
-		scale = 1, -- The code below activates font ligatures
-		harfbuzz_features = {
-			"liga=1",
-			"dlig=1",
-			"calt=1",
-			"clig=1",
-			"ss01=1",
-			"ss02=1",
-			"ss03=1",
-			"ss04=1",
-			"ss05=1",
-			"ss06=1",
-			"ss07=1",
-			"ss08=1",
-		},
-	},
-	{ family = "MesloLGS NF", scale = 1 },
-	{ family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1 },
+    {
+        family = "MonaspiceNe NFM Medium",
+        weight = "Regular",
+        italic = false,
+        scale = 1, -- The code below activates font ligatures
+        harfbuzz_features = {
+            "liga=1",
+            "dlig=1",
+            "calt=1",
+            "clig=1",
+            "ss01=1",
+            "ss02=1",
+            "ss03=1",
+            "ss04=1",
+            "ss05=1",
+            "ss06=1",
+            "ss07=1",
+            "ss08=1",
+        },
+    },
+    { family = "MesloLGS NF", scale = 1 },
+    { family = "SourceCodePro+Powerline+Awesome+Regular", scale = 1 },
 })
 config.adjust_window_size_when_changing_font_size = false
 config.font_size = 14
@@ -56,9 +56,15 @@ config.initial_cols = 120
 -- Visual Settings:
 -- inactive panes
 config.inactive_pane_hsb = {
-	saturation = 0.8,
-	brightness = 0.6,
+    saturation = 0.8,
+    brightness = 0.6,
 }
+config.underline_thickness = "0.075cell"
+
+-- Custom Warning Bell
+config.visual_bell = app.visual_bell
+config.colors = app.colors
+
 -- Tab bar
 config.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
 config.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
