@@ -51,9 +51,9 @@ fast-theme XDG:catppuccin-mocha
 
 ### Enable VPN Connections
 Due to WSL2 being a bit difficult with networking some settings have to be adjusted for VPN support.
-The file `resolved.conf` needs to be copied to `/etc/systemd/`. This will override
+The file [`resolved.conf`](./other/resolved.conf) needs to be copied to `/etc/systemd/`. This will override
 the same file there. It configures DNS settings of the distribution.
-Copy `.wslconfig` to `%UserProfile%` in Windows to enable the mirrored Networking
+Copy [`.wslconfig`](./other/.wslconfig) to `%UserProfile%` in Windows to enable the mirrored Networking
 mode for all WSL2 distributions. Also run the following command
 with admin priviliges in PowerShell to allow inbound connections:
 ```
