@@ -11,10 +11,10 @@ winget install win32yank
 ```
 ### Font with Utf8 Symbols
 You should also already have a patched font installed and applied to your terminal.
-wezterm.lua makes use of Monaspice Nerd Font from https://www.nerdfonts.com/
-with [MesloLGS NF](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k) as Fallback.
-and [SourceCodePro](https://github.com/gabrielelana/awesome-terminal-fonts/blob/patching-strategy/patched/SourceCodePro%2BPowerline%2BAwesome%2BRegular.ttf) as a further fallback.
-The Fonts are necessary as the symbols are used to design the terminal experience and as icons in certain applications.
+wezterm.lua makes use of Monaspice Neon Font from the
+[Monaspace Family](https://github.com/githubnext/monaspace).
+The Fonts are necessary as the symbols are used to design the terminal experience
+and as icons in certain applications.
 
 ## Setup configuration
 First use git to clone the configuration files and scripts to `~/minfiles`
