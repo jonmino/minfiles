@@ -1,6 +1,7 @@
-﻿-- Pull in the wezterm API
+﻿-- This file configures most of the appearance and visuals
+-- Pull in the wezterm API
 local wezterm = require("wezterm")
--- Colours
+-- Colors
 local BASE = "#1e1e2e"
 local CRUST = "#11111b"
 local MANTLE = "#181825"
@@ -113,6 +114,73 @@ local function right_status_element(fg, next, text)
         Background = { Color = fg },
     }, { Foreground = { Color = CRUST } }, { Text = text }
 end
+
+local appearance = {}
+
+appearance.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
+appearance.window_background_opacity = 0.9
+appearance.enable_scroll_bar = false
+appearance.default_cursor_style = "SteadyBar"
+appearance.cursor_thickness = "0.075cell"
+appearance.underline_thickness = "0.15cell" -- Make line a bit thicker
+appearance.inactive_pane_hsb = { -- Distinguish inactive from active pane
+    saturation = 0.8,
+    brightness = 0.6,
+}
+-- Font Settings
+appearance.font = wezterm.font({
+    family = "Monaspace Neon",
+    weight = "Medium",
+    italic = false,
+    scale = 1, -- The code below activates font ligatures
+    harfbuzz_features = {
+        "liga=1",
+        "dlig=1",
+        "clig=1",
+        "ss01=1",
+        "ss02=1",
+        "ss03=1",
+        "ss04=1",
+        "ss05=1",
+        "ss06=1",
+        "ss07=1",
+        "ss08=1",
+        "ss09=1",
+        "ss10=1",
+        "cv01=2",
+        "cv02=0",
+        "cv10=0",
+        "cv11=0",
+        "cv30=1",
+        "cv31=1",
+        "cv32=0",
+        "cv60=0",
+        "cv61=0",
+        "cv62=0",
+    },
+})
+appearance.font_size = 14
+appearance.line_height = 1
+appearance.strikethrough_position = "0.555cell" -- Define based on cell and not
+appearance.underline_position = "-0.1cell" -- font specific for consistency
+-- Use visual instead of audible bell
+appearance.audible_bell = "Disabled"
+appearance.visual_bell = {
+    fade_in_function = "EaseIn",
+    fade_in_duration_ms = 100,
+    fade_out_function = "EaseOut",
+    fade_out_duration_ms = 100,
+}
+appearance.colors = {
+    visual_bell = MAROON,
+}
+
+appearance.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
+appearance.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
+appearance.status_update_interval = 1000
+appearance.tab_bar_at_bottom = false
+appearance.use_fancy_tab_bar = false
+
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
     local edge_background = CRUST
     local LEFT_SEPERATOR = SOLID_SLASH_LEFT .. SOLID_RECTANGLE
@@ -222,55 +290,15 @@ wezterm.on("update-status", function(window, pane)
         right_status_element(MAUVE, BLUE, wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE),
     }))
 end)
-return {
-    tab_bar_style = {
-        new_tab = new_tab(SURFACE0, SUBTEXT0),
-        new_tab_hover = new_tab(SURFACE1, TEXT),
-        window_hide = button_style(CRUST, PEACH),
-        window_hide_hover = button_style(SURFACE0, YELLOW),
-        window_maximize = button_style(CRUST, BLUE),
-        window_maximize_hover = button_style(SURFACE0, SAPPHIRE),
-        window_close = button_style(CRUST, RED),
-        window_close_hover = button_style(SURFACE0, MAROON),
-    },
-    visual_bell = {
-        fade_in_function = "EaseIn",
-        fade_in_duration_ms = 100,
-        fade_out_function = "EaseOut",
-        fade_out_duration_ms = 100,
-    },
-    colors = {
-        visual_bell = MAROON,
-    },
-    font = {
-        family = "Monaspace Neon",
-        weight = "Medium",
-        italic = false,
-        scale = 1, -- The code below activates font ligatures
-        harfbuzz_features = {
-            "liga=1",
-            "dlig=1",
-            "clig=1",
-            "ss01=1",
-            "ss02=1",
-            "ss03=1",
-            "ss04=1",
-            "ss05=1",
-            "ss06=1",
-            "ss07=1",
-            "ss08=1",
-            "ss09=1",
-            "ss10=1",
-            "cv01=2",
-            "cv02=0",
-            "cv10=0",
-            "cv11=0",
-            "cv30=1",
-            "cv31=1",
-            "cv32=0",
-            "cv60=0",
-            "cv61=0",
-            "cv62=0",
-        },
-    },
+
+appearance.tab_bar_style = {
+    new_tab = new_tab(SURFACE0, SUBTEXT0),
+    new_tab_hover = new_tab(SURFACE1, TEXT),
+    window_hide = button_style(CRUST, PEACH),
+    window_hide_hover = button_style(SURFACE0, YELLOW),
+    window_maximize = button_style(CRUST, BLUE),
+    window_maximize_hover = button_style(SURFACE0, SAPPHIRE),
+    window_close = button_style(CRUST, RED),
+    window_close_hover = button_style(SURFACE0, MAROON),
 }
+return appearance

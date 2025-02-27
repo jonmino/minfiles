@@ -1,60 +1,43 @@
 ﻿-- Pull in the wezterm API
 local wezterm = require("wezterm")
+-- Pull in lib to merge tables
+local mytable = require("tableLib").mytable
 -- other config files
-local app = require("appearance")
+local appearance = require("appearance")
 local bindings = require("bindings")
 
 -- This table will hold the configuration.
-local config = {}
-
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-    config = wezterm.config_builder()
-end
+local generalSettings = {}
 
 -- Basic Settings:
 -- change default domain to WSL
-config.default_domain = "WSL:Ubuntu"
-config.term = "wezterm"
-config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
-config.font = wezterm.font(app.font)
-config.adjust_window_size_when_changing_font_size = false
-config.font_size = 14
-config.line_height = 1
-config.window_background_opacity = 0.9
-config.window_close_confirmation = "AlwaysPrompt"
-config.scrollback_lines = 5000
-config.enable_scroll_bar = false
-config.default_workspace = "main"
+generalSettings.default_domain = "WSL:Ubuntu"
+generalSettings.term = "wezterm"
+generalSettings.adjust_window_size_when_changing_font_size = false
+generalSettings.window_close_confirmation = "NeverPrompt"
+generalSettings.scrollback_lines = 5000
+generalSettings.default_workspace = "main"
 -- startup size
-config.initial_rows = 36
-config.initial_cols = 120
--- Visual Settings:
--- inactive panes
-config.inactive_pane_hsb = {
-    saturation = 0.8,
-    brightness = 0.6,
-}
-config.underline_thickness = "0.075cell"
+generalSettings.initial_rows = 36
+generalSettings.initial_cols = 120
+generalSettings.exit_behavior = "Close"
+generalSettings.swallow_mouse_click_on_window_focus = true
+-- Define Word delimiters
+-- Without dot & slash to make paths one word
+generalSettings.selection_word_boundary = " \t\n{}[]()\"'`,;:@│┃*…$"
+generalSettings.warn_about_missing_glyphs = false -- Annyoing because of the additional Window
 
--- Custom Warning Bell
-config.visual_bell = app.visual_bell
-config.colors = app.colors
+-- Assemble config from different subfiles
+-- In newer versions of wezterm, use the config_builder which will
+-- help provide clearer error messages
+local fullConfig = {}
 
--- Tab bar
-config.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
-config.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
-config.use_fancy_tab_bar = false
-config.status_update_interval = 1000
-config.tab_bar_at_bottom = false
-config.tab_bar_style = app.tab_bar_style
+if wezterm.config_builder then
+    fullConfig = wezterm.config_builder()
+end
 
--- Keybindings
-config.disable_default_key_bindings = true
-config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 2500 }
-config.keys = bindings.keys
-config.key_tables = bindings.key_tables
+-- Include subconfigs
+mytable.append_all(fullConfig, generalSettings, appearance, bindings)
 
 -- return the configuration to wezterm
-return config
+return fullConfig
