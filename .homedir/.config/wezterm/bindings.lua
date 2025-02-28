@@ -4,11 +4,11 @@ local wezterm = require("wezterm")
 -- imports/aliases
 local act = wezterm.action
 local MAUVE = "#cba6f7"
-local bindings = {}
+local config = {}
 
-bindings.disable_default_key_bindings = true
-bindings.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 2500 }
-bindings.keys = {
+config.disable_default_key_bindings = true
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 2500 }
+config.keys = {
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
@@ -100,7 +100,7 @@ bindings.keys = {
     },
     { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 }
-bindings.key_tables = {
+config.key_tables = {
     move_tab = {
         { key = "Enter", mods = "NONE", action = act.PopKeyTable },
         { key = "Escape", mods = "NONE", action = act.PopKeyTable },
@@ -121,11 +121,11 @@ bindings.key_tables = {
 }
 -- Quickly navigate Tabs with Index
 for i = 1, 9 do
-    table.insert(bindings.keys, {
+    table.insert(config.keys, {
         key = tostring(i),
         mods = "LEADER",
         action = act.ActivateTab(i - 1),
     })
 end
 -- return the configuration to wezterm
-return bindings
+return config

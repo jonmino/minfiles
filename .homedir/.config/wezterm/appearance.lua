@@ -1,6 +1,7 @@
 ﻿-- This file configures most of the appearance and visuals
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local titleParser = require("titleParser").titleParser
 -- Colors
 local BASE = "#1e1e2e"
 local CRUST = "#11111b"
@@ -30,58 +31,14 @@ local SOLID_SLASH_LEFT = ""
 local SOLID_SLASH_RIGHT = ""
 local THIN_SPACE = "\u{200A}"
 
-local process_icons = {
-    ["nvim"] = wezterm.nerdfonts.custom_vim,
-    ["make"] = wezterm.nerdfonts.seti_makefile,
-    ["vim"] = wezterm.nerdfonts.dev_vim,
-    ["zsh"] = wezterm.nerdfonts.dev_terminal,
-    ["bash"] = wezterm.nerdfonts.cod_terminal_bash,
-    ["btm"] = wezterm.nerdfonts.mdi_chart_donut_variant,
-    ["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
-    ["sudo"] = wezterm.nerdfonts.fa_hashtag,
-    ["git"] = wezterm.nerdfonts.dev_git,
-    ["lua"] = wezterm.nerdfonts.seti_lua,
-    ["wget"] = wezterm.nerdfonts.mdi_arrow_down_box,
-    ["curl"] = wezterm.nerdfonts.mdi_flattr,
-    ["node"] = wezterm.nerdfonts.dev_nodejs_small,
-    ["dotnet"] = wezterm.nerdfonts.md_language_csharp,
-    ["lazygit"] = wezterm.nerdfonts.dev_git,
-    ["lg"] = wezterm.nerdfonts.dev_git,
-    ["yazi"] = wezterm.nerdfonts.md_folder,
-    ["y"] = wezterm.nerdfonts.md_folder,
-    ["mamba"] = wezterm.nerdfonts.md_snake,
-    ["python"] = wezterm.nerdfonts.md_language_python,
-    ["ipython"] = wezterm.nerdfonts.md_language_python,
-}
-
 -- Functions:
--- -- This function returns the suggested title for a tab.
--- It prefers the title that was set via `tab:set_title()`
--- or `wezterm cli set-tab-title`, but falls back to the
--- title of the active pane in that tab.
-local function tab_title(tab_info)
-    local title = tab_info.tab_title
-    -- if the tab title is explicitly set, take that
-    if title and #title > 0 then
-        return title
-    end
-    -- Otherwise, use the title from the active pane
-    -- in that tab
-    title = tab_info.active_pane.title
-    local icon = process_icons[title]
-    if icon then
-        icon = icon .. " "
-    else
-        icon = ""
-    end
-    return icon .. title
-end
 
 -- Current working directory
 local shortcwd = function(fileurl)
     -- Nothing a little regex can't fix
     local filestr = fileurl.file_path
-    return string.gsub(filestr, "(.*[/\\])(.*)", "%2")
+    filestr = string.gsub(filestr, "^(/home/)([^/\\]*)(/?.*)", "~%3")
+    return string.gsub(filestr, "(.*[/\\])(.*[/\\])(.*)$", "%2%3")
 end
 
 local function button_style(bg, fg)
@@ -115,20 +72,20 @@ local function right_status_element(fg, next, text)
     }, { Foreground = { Color = CRUST } }, { Text = text }
 end
 
-local appearance = {}
+local config = {}
 
-appearance.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
-appearance.window_background_opacity = 0.9
-appearance.enable_scroll_bar = false
-appearance.default_cursor_style = "SteadyBar"
-appearance.cursor_thickness = "0.075cell"
-appearance.underline_thickness = "0.15cell" -- Make line a bit thicker
-appearance.inactive_pane_hsb = { -- Distinguish inactive from active pane
+config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
+config.window_background_opacity = 0.9
+config.enable_scroll_bar = false
+config.default_cursor_style = "SteadyBar"
+config.cursor_thickness = "0.075cell"
+config.underline_thickness = "0.15cell" -- Make line a bit thicker
+config.inactive_pane_hsb = { -- Distinguish inactive from active pane
     saturation = 0.8,
     brightness = 0.6,
 }
 -- Font Settings
-appearance.font = wezterm.font({
+config.font = wezterm.font({
     family = "Monaspace Neon",
     weight = "Medium",
     italic = false,
@@ -159,27 +116,28 @@ appearance.font = wezterm.font({
         "cv62=0",
     },
 })
-appearance.font_size = 14
-appearance.line_height = 1
-appearance.strikethrough_position = "0.555cell" -- Define based on cell and not
-appearance.underline_position = "-0.1cell" -- font specific for consistency
+config.font_size = 14
+config.line_height = 1
+config.strikethrough_position = "0.555cell" -- Define based on cell and not
+config.underline_position = "-0.1cell" -- font specific for consistency
 -- Use visual instead of audible bell
-appearance.audible_bell = "Disabled"
-appearance.visual_bell = {
+config.audible_bell = "Disabled"
+config.visual_bell = {
     fade_in_function = "EaseIn",
     fade_in_duration_ms = 100,
     fade_out_function = "EaseOut",
     fade_out_duration_ms = 100,
 }
-appearance.colors = {
+config.colors = {
     visual_bell = MAROON,
 }
 
-appearance.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
-appearance.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
-appearance.status_update_interval = 1000
-appearance.tab_bar_at_bottom = false
-appearance.use_fancy_tab_bar = false
+config.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
+config.integrated_title_button_style = "Windows" -- Styles = Windows, MacOSNative, Gnome
+config.status_update_interval = 1000
+config.tab_bar_at_bottom = false
+config.use_fancy_tab_bar = false
+config.tab_max_width = 20
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
     local edge_background = CRUST
@@ -212,11 +170,11 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
         end
     end
 
-    local title = tab_title(tab)
+    local title = titleParser.tab_title(tab)
     -- ensure that the titles fit in the available space,
     -- and that we have room for the edges.
-    title = wezterm.truncate_right(title, max_width - 6)
-    local number = wezterm.truncate_right(tostring(tab.tab_index + 1), max_width - 4)
+    title = wezterm.truncate_left(title, max_width - 6)
+    local number = wezterm.truncate_left(tostring(tab.tab_index + 1), max_width - 4)
 
     return {
         { Background = { Color = edge_background } },
@@ -291,7 +249,7 @@ wezterm.on("update-status", function(window, pane)
     }))
 end)
 
-appearance.tab_bar_style = {
+config.tab_bar_style = {
     new_tab = new_tab(SURFACE0, SUBTEXT0),
     new_tab_hover = new_tab(SURFACE1, TEXT),
     window_hide = button_style(CRUST, PEACH),
@@ -301,4 +259,4 @@ appearance.tab_bar_style = {
     window_close = button_style(CRUST, RED),
     window_close_hover = button_style(SURFACE0, MAROON),
 }
-return appearance
+return config

@@ -59,6 +59,7 @@ alias gis="git status"
 alias gss="git status -s"
 alias gid="git diff"
 alias gilg="git lg"
+alias glog="git log"
 alias gsub="git submodule update --remote --rebase"
 
 # vim
@@ -73,7 +74,7 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
 
-# misc 
+# misc
 alias update="zsh ~/minfiles/scripts/update.zsh"
 alias lg="lazygit"
 alias bcd="builtin cd"
