@@ -4,6 +4,7 @@
 # Source more completions
 fpath=(~/minfiles/submodules/zsh-completions/src $fpath)
 fpath=(~/minfiles/.homedir/.config/zsh/completions $fpath)
+fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 
 zmodload zsh/complist #Should be called before compinit
 
@@ -20,7 +21,7 @@ bindkey -M menuselect '^xn' accept-and-infer-next-history  # Next
 bindkey -M menuselect '^xu' undo                           # Undo
 
 # Load completion function and execute. Only update Cache once a day
-autoload -U compinit 
+autoload -U compinit
 if [ "$(fd --hidden --changed-before 6h --base-directory $ZDOTDIR .zcompdump)" ] ; then # Update Compdump every 6h
     compinit -d "$ZDOTDIR/.zcompdump" # XDG DATA/CACHE?
 else
