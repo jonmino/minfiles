@@ -55,7 +55,7 @@ config.keys = {
             until_unknown = false,
         }),
     },
-    { key = "n", mods = "LEADER", action = act.ShowTabNavigator },
+    { key = "t", mods = "LEADER", action = act.ShowTabNavigator },
     { key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
     { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
     {
@@ -69,10 +69,11 @@ config.keys = {
             until_unknown = false,
         }),
     },
-    { key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+    { key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "p", mods = "LEADER", action = act.PasteFrom("Clipboard") },
     { key = "x", mods = "LEADER", action = act.CloseCurrentTab({ confirm = false }) },
     { key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+    { key = "d", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS" }) },
     -- Prompt for a name to use for a new workspace and switch to it.
     {
         key = "W",
