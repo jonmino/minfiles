@@ -5,13 +5,18 @@ local mytable = require("tableLib").mytable
 -- other config files
 local appearance = require("appearance")
 local bindings = require("bindings")
+local launchMenu = require("launchMenu")
 
 -- This table will hold the configuration.
 local config = {}
 
 -- Basic Settings:
--- change default domain to WSL
-config.default_domain = "WSL:Ubuntu"
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+    --- Set Pwsh as the default on Windows
+    config.default_prog = { "powershell.exe", "-NoLogo" }
+    -- change default domain to WSL
+    config.default_domain = "WSL:Ubuntu"
+end
 config.term = "wezterm"
 config.adjust_window_size_when_changing_font_size = false
 config.window_close_confirmation = "NeverPrompt"
@@ -37,7 +42,7 @@ if wezterm.config_builder then
 end
 
 -- Include subconfigs
-mytable.append_all(fullConfig, config, appearance, bindings)
+mytable.append_all(fullConfig, config, launchMenu, appearance, bindings)
 
 -- return the configuration to wezterm
 return fullConfig
