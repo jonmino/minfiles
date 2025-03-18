@@ -20,19 +20,16 @@ source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
 # Load dircolors
 eval "$(dircolors -b $ZDOTDIR/dircolors)"
 
-# Homebrew -> Needs to be this far up so installed applications are available
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 # Load ZSH Settings
 source ${ZDOTDIR}/zsh-options
 
 # Load Configs
 source ${ZDOTDIR}/zsh-integrations
+source ${ZDOTDIR}/zsh-completion
 source ${ZDOTDIR}/zsh-functions
 source ${ZDOTDIR}/zsh-aliases
-source ${ZDOTDIR}/zsh-completion
 source ${ZDOTDIR}/zsh-vi-mode
-source /etc/zsh_command_not_found
+source /usr/share/doc/pkgfile/command-not-found.zsh
 zle_highlight+=('paste:none')
 
 # Find autosuggestion match from Completion then history

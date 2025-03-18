@@ -25,7 +25,7 @@ alias y="yazicdonquit"
 
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
-alias shutdown="wsl.exe --shutdown"
+alias shutdown="wsl.exe --terminate archlinux"
 
 # configs
 alias zshconf="nvim ~/minfiles/.homedir/.config/zsh/.zshrc"

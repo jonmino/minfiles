@@ -28,6 +28,7 @@ export EDITOR=nvim
 export BROWSER=firefox
 export PAGER=most
 export MANPAGER=most
+export BAT_PAGER=most
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'

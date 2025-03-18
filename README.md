@@ -19,7 +19,7 @@ and as icons in certain applications.
 ## Setup configuration
 First use git to clone the configuration files and scripts to `~/minfiles`
 ```
-git clone git@github.com:jonmino/minfiles.git ~
+git clone git@github.com:jonmino/minfiles.git ~/minfiles/ --recursive
 ```
 Before you can use the config the packges to be configured need to be installed.
 
@@ -51,9 +51,9 @@ fast-theme XDG:catppuccin-mocha
 
 ### Enable VPN Connections
 Due to WSL2 being a bit difficult with networking some settings have to be adjusted for VPN support.
-The file [`resolved.conf`](./other/resolved.conf) needs to be copied to `/etc/systemd/`. This will override
+The file [`resolved.conf`](./other/wsl/resolved.conf) needs to be copied to `/etc/systemd/`. This will override
 the same file there. It configures DNS settings of the distribution.
-Copy [`.wslconfig`](./other/.wslconfig) to `%UserProfile%` in Windows to enable the mirrored Networking
+Copy [`.wslconfig`](./other/wsl/.wslconfig) to `%UserProfile%` in Windows to enable the mirrored Networking
 mode for all WSL2 distributions. Also run the following command
 with admin priviliges in PowerShell to allow inbound connections:
 ```

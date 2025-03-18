@@ -3,18 +3,22 @@
 
 set -eu -o pipefail # fail on error and report it, debug all lines
 
-echo "Updating package list..."
-sudo apt-get update
+sudo -n true
+test $? -eq 0 || exit 1 "you should have sudo privilege to run this script"
 
 echo "Installing applications from apt"
-while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
-    build-essential
+while read -r p ; do sudo pacman -Sy $p ; done < <(cat << "EOF"
+    base
+    base-devel
+    linux-lts
+    linux-firmware
+    man
+    sudo
     coreutils
     cmake
     curl
     evince
     file
-    fonts-powerline
     git
     less
     make
@@ -26,19 +30,25 @@ while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
     unzip
     wget
     7zip
+    bat
+    eza
+    fd
+    fzf
+    lazygit
+    neovim
+    ripgrep
+    yazi
+    pkgfile
+    openssh
 EOF
 )
-
-echo "Installing other applications with Homebrew" # Versions in apt are to old
-
-brew install eza fd fzf jesseduffield/lazygit/lazygit neovim ripgrep yazi
 
 # Zoxide see https://github.com/ajeetdsouza/zoxide for installation guide
 echo "Installing Zoxide ..."
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 echo
-echo 
-echo 
+echo
+echo
 echo "Install script is finised"
 echo "Now restart the Shell and link the dotfiles using stow"

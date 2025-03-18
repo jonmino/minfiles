@@ -7,7 +7,7 @@ sudo -n true
 test $? -eq 0 || exit 1 "you should have sudo privilege to run this script"
 
 echo "Installing Zsh ..."
-sudo apt install zsh
+sudo pacman -Sy zsh
 echo "Installed Zsh version is $(zsh --version)"
 
 read -p "?Is it a newer version than 5.0.8? (y/n) " yn
