@@ -2,34 +2,12 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local titleParser = require("titleParser").titleParser
--- Colors
-local BASE = "#1e1e2e"
-local CRUST = "#11111b"
-local MANTLE = "#181825"
-local SURFACE0 = "#313244"
-local SURFACE1 = "#45475a"
-local TEXT = "#cdd6f4"
-local SUBTEXT0 = "#a6adc8"
-local RED = "#f38ba8"
-local MAROON = "#eba0ac"
-local PEACH = "#fab387"
-local YELLOW = "#f9e2af"
-local BLUE = "#89b4fa"
-local SAPPHIRE = "#74c7ec"
-local SKY = "#89dceb"
-local MAUVE = "#cba6f7"
--- Symbols
--- The filled in variant of the (\uE0B0) symbol
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
--- The filled in variant of the (\uE0B2) symbol
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
--- Rectangle: "\u2588" -> █
-local SOLID_RECTANGLE = "█"
--- Slash left: "\ue0ba" -> 
-local SOLID_SLASH_LEFT = ""
--- Slash right: "\ue0bc" -> 
-local SOLID_SLASH_RIGHT = ""
-local THIN_SPACE = "\u{200A}"
+-- Import Theme
+local catppuccin = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+-- Import Colors and Symbols HACK:Should witch to table from Theme as soon as available
+local theme = require("theme")
+local colors = theme.colors
+local symbols = theme.symbols
 
 -- Functions:
 
@@ -45,37 +23,40 @@ local function button_style(bg, fg)
     return wezterm.format({
         { Background = { Color = fg } },
         { Foreground = { Color = bg } },
-        { Text = SOLID_RIGHT_ARROW },
+        { Text = symbols.solid_left_arrow },
         { Background = { Color = bg } },
         { Foreground = { Color = fg } },
-        { Text = SOLID_RIGHT_ARROW },
+        { Text = symbols.solid_left_arrow },
     })
 end
 
 local function new_tab(bg, text)
     return wezterm.format({
-        { Background = { Color = CRUST } },
+        { Background = { Color = colors.crust } },
         { Foreground = { Color = bg } },
-        { Text = SOLID_SLASH_LEFT },
+        { Text = symbols.slash_solid_right },
         { Background = { Color = bg } },
         { Foreground = { Color = text } },
         { Text = "+" },
-        { Background = { Color = CRUST } },
+        { Background = { Color = colors.crust } },
         { Foreground = { Color = bg } },
-        { Text = SOLID_SLASH_RIGHT },
+        { Text = symbols.slash_solid_left },
     })
 end
 
 local function right_status_element(fg, next, text)
-    return { Background = { Color = next } }, { Foreground = { Color = fg } }, { Text = SOLID_LEFT_ARROW }, {
+    return { Background = { Color = next } }, { Foreground = { Color = fg } }, { Text = symbols.solid_left_arrow }, {
         Background = { Color = fg },
-    }, { Foreground = { Color = CRUST } }, { Text = text }
+    }, { Foreground = { Color = colors.crust } }, { Text = text }
 end
 
 local config = {}
 
-config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte, nord
+catppuccin.compose_cursor = colors.maroon -- HACK:There has to be a better way
+config.color_schemes = { ["Catppuccin Mocha v2"] = catppuccin }
+config.color_scheme = "Catppuccin Mocha v2"
 config.window_background_opacity = 0.9
+config.text_background_opacity = 1.0
 config.enable_scroll_bar = false
 config.default_cursor_style = "SteadyBar"
 config.cursor_thickness = "0.075cell"
@@ -129,7 +110,7 @@ config.visual_bell = {
     fade_out_duration_ms = 100,
 }
 config.colors = {
-    visual_bell = MAROON,
+    visual_bell = colors.red,
 }
 
 config.window_decorations = "RESIZE" -- TITLE und RESIZE / INTEGRATED_BUTTONS|RESIZE
@@ -140,20 +121,20 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 20
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local edge_background = CRUST
-    local LEFT_SEPERATOR = SOLID_SLASH_LEFT .. SOLID_RECTANGLE
-    local RIGHT_SEPERATOR = SOLID_RECTANGLE .. SOLID_SLASH_RIGHT
+    local edge_background = colors.crust
+    local LEFT_SEPERATOR = symbols.slash_solid_right .. symbols.solid_rectangle
+    local RIGHT_SEPERATOR = symbols.solid_rectangle .. symbols.slash_solid_left
     local background
     local foreground
     if tab.is_active then
-        background = BASE
-        foreground = PEACH
+        background = colors.base
+        foreground = colors.peach
     elseif hover then
-        background = SURFACE0
-        foreground = SKY
+        background = colors.surface0
+        foreground = colors.sky
     else
-        background = CRUST
-        foreground = SAPPHIRE
+        background = colors.crust
+        foreground = colors.sapphire
     end
 
     local edge_foreground = background
@@ -189,7 +170,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
         { Text = number },
         { Background = { Color = edge_background } },
         { Foreground = { Color = foreground } },
-        { Text = SOLID_SLASH_RIGHT },
+        { Text = symbols.slash_solid_left },
     }
 end)
 
@@ -197,16 +178,16 @@ end)
 wezterm.on("update-status", function(window, pane)
     -- Workspace name
     local stat = window:active_workspace()
-    local stat_color = RED
+    local stat_color = colors.red
     -- It's a little silly to have workspace name all the time
     -- Utilize this to display LDR or current key table name
     if window:active_key_table() then
         stat = window:active_key_table()
-        stat_color = SAPPHIRE
+        stat_color = colors.sapphire
     end
     if window:leader_is_active() then
         stat = "LDR"
-        stat_color = MAUVE
+        stat_color = colors.mauve
     end
 
     -- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l). Not a big deal, but check in case
@@ -219,44 +200,56 @@ wezterm.on("update-status", function(window, pane)
 
     -- Left status (left of the tab line)
     window:set_left_status(wezterm.format({
-        { Background = { Color = CRUST } },
+        { Background = { Color = colors.crust } },
         { Foreground = { Color = stat_color } },
-        { Text = SOLID_RECTANGLE },
+        { Text = symbols.solid_rectangle },
         { Background = { Color = stat_color } },
-        { Foreground = { Color = CRUST } },
+        { Foreground = { Color = colors.crust } },
         { Text = wezterm.nerdfonts.md_desktop_tower .. " " },
-        { Background = { Color = CRUST } },
+        { Background = { Color = colors.crust } },
         { Foreground = { Color = stat_color } },
-        { Text = SOLID_SLASH_RIGHT },
+        { Text = symbols.slash_solid_left },
         { Text = " " .. stat },
         { Background = { Color = stat_color } },
-        { Foreground = { Color = CRUST } },
-        { Text = SOLID_RECTANGLE .. SOLID_SLASH_RIGHT },
-        { Background = { Color = CRUST } },
+        { Foreground = { Color = colors.crust } },
+        { Text = symbols.solid_rectangle .. symbols.slash_solid_left },
+        { Background = { Color = colors.crust } },
         { Foreground = { Color = stat_color } },
-        { Text = SOLID_SLASH_RIGHT },
+        { Text = symbols.slash_solid_left },
     }))
 
     -- Right status
     -- Wezterm has a built-in nerd fonts
     -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
     window:set_right_status(wezterm.format({
-        right_status_element(PEACH, CRUST, wezterm.nerdfonts.md_folder .. THIN_SPACE .. cwd .. THIN_SPACE),
+        right_status_element(
+            colors.peach,
+            colors.crust,
+            wezterm.nerdfonts.md_folder .. symbols.thin_space .. cwd .. symbols.thin_space
+        ),
     }) .. wezterm.format({
-        right_status_element(BLUE, PEACH, wezterm.nerdfonts.md_clock .. THIN_SPACE .. time .. THIN_SPACE),
+        right_status_element(
+            colors.blue,
+            colors.peach,
+            wezterm.nerdfonts.md_clock .. symbols.thin_space .. time .. symbols.thin_space
+        ),
     }) .. wezterm.format({
-        right_status_element(MAUVE, BLUE, wezterm.nerdfonts.md_calendar .. THIN_SPACE .. date .. THIN_SPACE),
+        right_status_element(
+            colors.mauve,
+            colors.blue,
+            wezterm.nerdfonts.md_calendar .. symbols.thin_space .. date .. symbols.thin_space
+        ),
     }))
 end)
 
 config.tab_bar_style = {
-    new_tab = new_tab(SURFACE0, SUBTEXT0),
-    new_tab_hover = new_tab(SURFACE1, TEXT),
-    window_hide = button_style(CRUST, PEACH),
-    window_hide_hover = button_style(SURFACE0, YELLOW),
-    window_maximize = button_style(CRUST, BLUE),
-    window_maximize_hover = button_style(SURFACE0, SAPPHIRE),
-    window_close = button_style(CRUST, RED),
-    window_close_hover = button_style(SURFACE0, MAROON),
+    new_tab = new_tab(colors.surface0, colors.subtext0),
+    new_tab_hover = new_tab(colors.surface1, colors.text),
+    window_hide = button_style(colors.crust, colors.peach),
+    window_hide_hover = button_style(colors.surface0, colors.yellow),
+    window_maximize = button_style(colors.crust, colors.blue),
+    window_maximize_hover = button_style(colors.surface0, colors.sapphire),
+    window_close = button_style(colors.crust, colors.red),
+    window_close_hover = button_style(colors.surface0, colors.maroon),
 }
 return config

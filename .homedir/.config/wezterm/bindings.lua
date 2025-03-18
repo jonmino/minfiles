@@ -2,8 +2,8 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 -- imports/aliases
+local colors = require("theme").colors
 local act = wezterm.action
-local MAUVE = "#cba6f7"
 local config = {}
 
 config.disable_default_key_bindings = true
@@ -30,7 +30,7 @@ config.keys = {
         action = act.PromptInputLine({
             description = wezterm.format({
                 { Attribute = { Intensity = "Bold" } },
-                { Foreground = { Color = MAUVE } },
+                { Foreground = { Color = colors.mauve } },
                 { Text = "Renaming Tab Title...:" },
             }),
             action = wezterm.action_callback(function(window, pane, line)
