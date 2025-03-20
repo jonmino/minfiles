@@ -12,6 +12,7 @@ while read -r p ; do sudo pacman -Sy $p ; done < <(cat << "EOF"
     base-devel
     linux-lts
     linux-firmware
+    libxcrypt-compat
     man
     sudo
     coreutils
@@ -19,7 +20,6 @@ while read -r p ; do sudo pacman -Sy $p ; done < <(cat << "EOF"
     curl
     evince
     file
-    git
     less
     make
     most

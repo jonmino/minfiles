@@ -15,7 +15,7 @@ case $yn in
     [Yy]*)
         echo ok continuing...
         echo Making Zsh the default shell
-        chsh -s $(which zsh)
+        chsh -s /usr/bin/zsh
         echo All done, now restart to use zsh
         echo "Confirm via echo \$SHELL and \$SHELL --version";;
     [Nn]*)

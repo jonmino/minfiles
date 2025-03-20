@@ -1,0 +1,1 @@
+winget settings --enable InstallerHashOverride
