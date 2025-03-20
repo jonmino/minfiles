@@ -23,6 +23,10 @@ alias ltt='eza -Tha --level=2'
 # yazi
 alias y="yazicdonquit"
 
+# bat
+alias man="batman"
+alias cat="bat"
+
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
 alias shutdown="wsl.exe --terminate archlinux"
@@ -33,6 +37,7 @@ alias zshenv="nvim ~/minfiles/.homedir/.zshenv"
 alias updateconf="nvim ~/minfiles/scripts/update.zsh"
 alias p10kconf="nvim ~/minfiles/.homedir/.config/zsh/.p10k.zsh"
 alias aliasconf="nvim ~/minfiles/.homedir/.config/zsh/zsh-aliases" # <- this file
+alias histedit="nvim ${XDG_DATA_HOME}/zsh_history"
 
 # make
 alias remake='make clean && make'

@@ -42,9 +42,9 @@ export FZF_DEFAULT_OPTS="-i --height=50% --info=inline --border=rounded --layout
 export PATH="$HOME/.local/bin:$PATH"
 
 # LaTex / Texlive
-export PATH="$HOME/.local/texlive/2024/bin/x86_64-linux:$PATH"
-export MANPATH="$HOME/.local/texlive/2024/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="$HOME/.local/texlive/2024/texmf-dist/doc/man:$INFOPATH"
+export PATH="$HOME/.local/texlive/2025/bin/x86_64-linux:$PATH"
+export MANPATH="$HOME/.local/texlive/2025/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="$HOME/.local/texlive/2025/texmf-dist/doc/man:$INFOPATH"
 
 # Julia
 export PATH="$HOME/.julia/juliaup/julia-1.11.1+0.x64.linux.gnu/bin:$PATH"
