@@ -48,20 +48,20 @@ source <(fzf --zsh)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jomino/.local/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/jonmino/.local/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/jomino/.local/conda/etc/profile.d/conda.sh" ]; then
-        . "/home/jomino/.local/conda/etc/profile.d/conda.sh"
+    if [ -f "/home/jonmino/.local/conda/etc/profile.d/conda.sh" ]; then
+        . "/home/jonmino/.local/conda/etc/profile.d/conda.sh"
     else
-        export PATH="/home/jomino/.local/conda/bin:$PATH"
+        export PATH="/home/jonmino/.local/conda/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/jomino/.local/conda/etc/profile.d/mamba.sh" ]; then
-    . "/home/jomino/.local/conda/etc/profile.d/mamba.sh"
+if [ -f "/home/jonmino/.local/conda/etc/profile.d/mamba.sh" ]; then
+    . "/home/jonmino/.local/conda/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 

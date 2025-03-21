@@ -6,8 +6,7 @@ set -eu -o pipefail # fail on error and report it, debug all lines
 sudo -n true
 test $? -eq 0 || exit 1 "you should have sudo privilege to run this script"
 
-echo "Installing applications from apt"
-while read -r p ; do sudo pacman -Sy $p ; done < <(cat << "EOF"
+packages=(
     base
     base-devel
     linux-lts
@@ -40,8 +39,10 @@ while read -r p ; do sudo pacman -Sy $p ; done < <(cat << "EOF"
     yazi
     pkgfile
     openssh
-EOF
 )
+
+echo "Installing applications from apt"
+sudo pacman -Sy "${packages[@]}"
 
 # Zoxide see https://github.com/ajeetdsouza/zoxide for installation guide
 echo "Installing Zoxide ..."

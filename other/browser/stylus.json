@@ -281,7 +281,7 @@
     "name": "Reddit Catppuccin",
     "updateDate": 1702711408900,
     "_id": "e0fd73ae-8b9e-4bf4-b0c6-b0c73295077a",
-    "_rev": 1739884008840,
+    "_rev": 1742578621241,
     "id": 2,
     "originalDigest": "cd3d627c78ec0c29a154dda24bbf5d5fe52693c0",
     "etag": "W/\"f792237b10f3100935ab32729b16fb1ab8d50e87e83c75bf3a2515235dbe4713\""
@@ -458,7 +458,7 @@
     "name": "ChatGPT Catppuccin",
     "updateDate": 1739712433368,
     "_id": "946a1e0e-940b-48a1-9e69-2cce04fdc9a9",
-    "_rev": 1739884008952,
+    "_rev": 1742578621322,
     "id": 3,
     "etag": "W/\"48fc5bfbc690cd5559a37f0b39aad184147095b1b8fe7f8d9b810ced3b7d2acf\"",
     "updatable": true,
@@ -636,7 +636,7 @@
     "name": "GitHub Catppuccin",
     "updateDate": 1702711408767,
     "_id": "00817051-4848-4635-9b60-f89e24800a86",
-    "_rev": 1739884009011,
+    "_rev": 1742578621356,
     "id": 5,
     "originalDigest": "5b93e8c031efb02ea7c2ce3adf049fc85abe3a69",
     "etag": "W/\"791c9be410377d084b6ceeafd250e73ddc050e1b1d1871c34bdca525e23747c8\""
@@ -813,7 +813,7 @@
     "name": "Twitch Catppuccin",
     "updateDate": 1696770159290,
     "_id": "8f9fb8e2-540d-4833-9947-194dd2e18603",
-    "_rev": 1739884009142,
+    "_rev": 1742578621431,
     "id": 6,
     "originalDigest": "5473a8d1b766af448574bff65598cda2a93be14d",
     "etag": "W/\"1cdf89ccbc34c497ac992b17386ee6b9ef1b69cdd8b21820e478ec4b0366b414\""
@@ -998,7 +998,7 @@
     "name": "WhatsApp Web Catppuccin",
     "updateDate": 1703629484575,
     "_id": "1518eacb-f362-4a53-aaf4-875ecd405223",
-    "_rev": 1739884009231,
+    "_rev": 1742578621479,
     "id": 7,
     "originalDigest": "acfc216fb1a9515bf728d16f9b54f24bfd586ba1",
     "etag": "W/\"996c7a47993a28522ad6aa4fe79c9373d5bda2978a0e5db7a1d71a602b3f155b\""
@@ -1172,7 +1172,7 @@
           "type": "checkbox",
           "label": "Enable YouTube logo",
           "name": "logo",
-          "value": "0",
+          "value": "1",
           "default": "1",
           "options": null
         },
@@ -1191,7 +1191,7 @@
     "name": "YouTube Catppuccin",
     "updateDate": 1702711408898,
     "_id": "40759302-952a-4301-8639-6a2d78676ab3",
-    "_rev": 1739884009260,
+    "_rev": 1742579363434,
     "id": 8,
     "originalDigest": "fa46e9016f518e9fcf9147c4e40bd14a47d75fa3",
     "etag": "W/\"432badde3a928566e665da67fd0316b21a15341bb2c5453de1d5a7eacf96238d\""
@@ -1368,8 +1368,9 @@
     "name": "Have I Been Pwned Catppuccin",
     "originalDigest": "da6b78f92a106fb10382fdbe738111ba66f59cbb",
     "_id": "2dc8ded0-7306-4195-9a9d-ea28b4d3dac7",
-    "_rev": 1739884009353,
-    "id": 11
+    "_rev": 1742578621549,
+    "id": 11,
+    "etag": "W/\"653bf272055cc4c7b57eda85f12df120a9b92c6aa4be037cf496e6baef621a8c\""
   },
   {
     "enabled": true,
@@ -1543,8 +1544,9 @@
     "name": "Learn X in Y Minutes Catppuccin",
     "originalDigest": "5aa5b688b7540a37df408807277b05d2cb8425c9",
     "_id": "a3708322-0586-4704-a0c2-959b83aaf6a2",
-    "_rev": 1739884009383,
-    "id": 12
+    "_rev": 1742578621566,
+    "id": 12,
+    "etag": "W/\"04aabfd49077bd4dbc184bdafbc03b846c62ffd7d2ef97a1561d60a4331aa0fb\""
   },
   {
     "enabled": true,
@@ -1718,8 +1720,9 @@
     "name": "DuckDuckGo Catppuccin",
     "originalDigest": "c10b0003593080fd54ec9f6f342daa2acb808416",
     "_id": "b061187d-c057-4568-bc9c-34aebf1fb74c",
-    "_rev": 1739884009402,
-    "id": 14
+    "_rev": 1742578621578,
+    "id": 14,
+    "etag": "W/\"5498e38db36015bf7da29aa0cbac932a76962f9adc3d24f340603e7626acf5d0\""
   },
   {
     "enabled": true,
@@ -1901,8 +1904,9 @@
     "name": "Lichess Catppuccin",
     "originalDigest": "f0f4dac73969bbb2ffa93ee9b2b56eccc31678fc",
     "_id": "a2f3ff63-fb67-4b4f-81ba-b5d350b31806",
-    "_rev": 1739884009506,
-    "id": 15
+    "_rev": 1742578621637,
+    "id": 15,
+    "etag": "W/\"5ae1f6c5db96deee8126dee6bcabd3ace04d64f9c89ce7e19a404b1323e3ce12\""
   },
   {
     "enabled": true,
@@ -2076,8 +2080,9 @@
     "name": "LinkedIn Catppuccin",
     "originalDigest": "ae523380f1d5d16bd800b95d418b953eedb0247b",
     "_id": "643e2a33-57fd-4ec2-b130-4413e2b57e12",
-    "_rev": 1739884009553,
-    "id": 16
+    "_rev": 1742578621665,
+    "id": 16,
+    "etag": "W/\"bff9ea80ca44fd018c8406567bfc78c99d2936583903338cf6857aca14959f4b\""
   },
   {
     "enabled": true,
@@ -2251,8 +2256,9 @@
     "name": "Stack Overflow Catppuccin",
     "originalDigest": "7131ae980873725e62efaabc621b69fd7ecef969",
     "_id": "a4eb5d37-0199-49e5-b1bf-144487ce027f",
-    "_rev": 1739884009599,
-    "id": 17
+    "_rev": 1742578621691,
+    "id": 17,
+    "etag": "W/\"cfbbd71a613bfee979bcc99d749f31ce4be6d9c1f1d5d3a5189b66bca9f844b6\""
   },
   {
     "enabled": true,
@@ -2434,8 +2440,9 @@
     "name": "Wikipedia Catppuccin",
     "originalDigest": "9fa8182bd94759afd889b21b3d1d64adc0bb9ae5",
     "_id": "812fa7ff-5e21-4dc9-8a24-15d3048bd486",
-    "_rev": 1739884009740,
-    "id": 18
+    "_rev": 1742578621765,
+    "id": 18,
+    "etag": "W/\"db6c1f6b6458e67c3d85e3743795ff57e5cf9d7f1e11848dc6e9914cc8c3c65d\""
   },
   {
     "enabled": true,
@@ -2609,7 +2616,7 @@
     "name": "Brave Search Catppuccin",
     "originalDigest": "e93d91d4be5203383325d894b886e6e1401d9f43",
     "_id": "4f12042d-4dcb-44e7-b432-7ca81d00c098",
-    "_rev": 1740393846653,
+    "_rev": 1742578621834,
     "id": 19
   }
 ]

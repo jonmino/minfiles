@@ -42,9 +42,10 @@ You can read more about the why here: https://learn.microsoft.com/en-us/windows/
 
 ### Git
 To be able to optain this repository with all it's files it is recommended
-to use Git. This can be installed using
+to use Git. To run the scripts you also need the sudo package.
+They can be installed using
 ```
-pacman -Sy git
+pacman -Sy git sudo
 ```
 
 ## Setup configuration
