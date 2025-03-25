@@ -51,3 +51,4 @@ export PATH="$HOME/.julia/juliaup/julia-1.11.1+0.x64.linux.gnu/bin:$PATH"
 
 # MISC
 export VIMCONFIG=${XDG_CONFIG_HOME:-$HOME/.config}/nvim
+. "$HOME/.cargo/env"

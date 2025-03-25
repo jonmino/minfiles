@@ -23,8 +23,8 @@ winget install --id Mojang.MinecraftLauncher
 winget install --id Ubisoft.Connect
 winget install --id ElectronicArts.EADesktop
 winget install --id EpicGames.EpicGamesLauncher
-winget install --id FACEITLTD.FACEITAC
-winget install --id FACEITLTD.FACEITClient
+winget install --id FACEITLTD.FACEITClient --ignore-security-hash
+winget install --id FACEITLTD.FACEITAC --ignore-security-hash
 winget install --id Elgato.StreamDeck
 winget install --id Elgato.WaveLink
 pause

@@ -46,24 +46,22 @@ bindkey '^O' mambas # ctrl + o as shortcut keybinding
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jonmino/.local/conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/home/jonmino/.local/conda/bin/mamba';
+export MAMBA_ROOT_PREFIX='/home/jonmino/.local/conda';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+    eval "$__mamba_setup"
 else
-    if [ -f "/home/jonmino/.local/conda/etc/profile.d/conda.sh" ]; then
-        . "/home/jonmino/.local/conda/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/jonmino/.local/conda/bin:$PATH"
-    fi
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
-unset __conda_setup
+unset __mamba_setup
+# <<< mamba initialize <<<
 
-if [ -f "/home/jonmino/.local/conda/etc/profile.d/mamba.sh" ]; then
-    . "/home/jonmino/.local/conda/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
+# Node/NVM
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Load other Plugins
 source ~/minfiles/submodules/zsh-bd/bd.zsh
