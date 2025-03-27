@@ -30,6 +30,7 @@ packages=(
     wget
     7zip
     bat
+    bat-extras
     eza
     fd
     fzf
