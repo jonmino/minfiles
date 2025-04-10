@@ -13,8 +13,6 @@ local config = {}
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
     --- Set Pwsh as the default on Windows
     config.default_prog = { "powershell.exe", "-NoLogo" }
-    -- change default domain to WSL
-    config.default_domain = "WSL:archlinux"
 end
 config.term = "wezterm"
 config.adjust_window_size_when_changing_font_size = false
