@@ -16,7 +16,7 @@ export TERM_PROGRAM="WezTerm"
 
 # ZSH
 export ZDOTDIR=${ZDOTDIR:=${XDG_CONFIG_HOME}/zsh}
-export max_print_line=2147483647
+export max_print_line=19999
 export HISTFILE=$XDG_DATA_HOME/zsh_history
 export CASE_SENSITIVE="true"
 export HIST_STAMPS="yyyy-mm-dd"
