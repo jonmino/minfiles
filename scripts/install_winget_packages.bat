@@ -5,6 +5,8 @@ winget install --id Brave.Brave.Nightly
 winget install --id Microsoft.WSL
 winget install --id 7zip.7zip
 winget install --id Notepad++.Notepad++
+winget install --id DigitalScholar.Zotero
+winget install --id JohnMacFarlane.Pandoc
 winget install --id Microsoft.VisualStudioCode
 winget install --id Microsoft.OneDrive
 winget install --id VideoLAN.VLC
