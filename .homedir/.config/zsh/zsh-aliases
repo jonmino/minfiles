@@ -29,7 +29,8 @@ alias cat="bat"
 
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
-alias shutdown="wsl.exe --terminate archlinux"
+alias shutdown="wsl.exe --shutdown"
+alias terminate="wsl.exe --terminate archlinux"
 
 # configs
 alias zshconf="nvim ~/minfiles/.homedir/.config/zsh/.zshrc"
