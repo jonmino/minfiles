@@ -21,10 +21,10 @@ bindkey -M menuselect '^xu' undo                           # Undo
 
 # Load completion function and execute. Only update Cache once a day
 autoload -Uz compinit
-if [ "$(fd --hidden --changed-before 6h --base-directory $ZDOTDIR .zcompdump)" ] ; then # Update Compdump every 6h
-    compinit -d "$ZDOTDIR/.zcompdump" # XDG DATA/CACHE?
+if [ "$(fd --hidden --changed-before 6h --base-directory $XDG_CACHE_HOME .zcompdump)" ] ; then # Update Compdump every 6h
+    compinit -d "${XDG_CACHE_HOME}/.zcompdump"
 else
-    compinit -C -d "$ZDOTDIR/.zcompdump"
+    compinit -C -d "${XDG_CACHE_HOME}/.zcompdump"
 fi
 _comp_options+=(globdots) # Include hidden files
 

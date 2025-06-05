@@ -8,17 +8,6 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-# Initialize ssh-agent with suppressed output
-{eval "$(ssh-agent -s)";} &>/dev/null
-
-# Zoxide
-eval "$(zoxide init zsh --cmd cd)" # Initialize zoxide and replace cd command with it
-
-# Sourcing Theme
-source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
-
-# Load dircolors
-eval "$(dircolors -b $ZDOTDIR/dircolors)"
 
 # Load ZSH Settings
 source ${ZDOTDIR}/zsh-options
@@ -30,7 +19,19 @@ source ${ZDOTDIR}/zsh-functions
 source ${ZDOTDIR}/zsh-aliases
 source ${ZDOTDIR}/zsh-vi-mode
 source /usr/share/doc/pkgfile/command-not-found.zsh
+
 zle_highlight+=('paste:none')
+# Initialize ssh-agent with suppressed output
+{eval "$(ssh-agent -s)";} &>/dev/null
+
+# Zoxide
+eval "$(zoxide init zsh --cmd cd)" # Initialize zoxide and replace cd command with it
+
+# Sourcing Theme
+source ~/minfiles/submodules/powerlevel10k/powerlevel10k.zsh-theme
+
+# Load dircolors
+eval "$(dircolors -b $ZDOTDIR/dircolors)"
 
 # Find autosuggestion match from Completion then history
 export ZSH_AUTOSUGGEST_STRATEGY=(
