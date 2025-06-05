@@ -14,7 +14,7 @@ winget install --id th-ch.YouTubeMusic
 winget install --id NordSecurity.NordVPN
 winget install --id Zoom.Zoom
 winget install --id Inkscape.Inkscape
-winget install --id GIMP.GIMP
+winget install --id GIMP.GIMP.3
 winget install --id Governikus.AusweisApp
 winget install --id Microsoft.PowerToys
 winget install --id Bitwarden.Bitwarden
