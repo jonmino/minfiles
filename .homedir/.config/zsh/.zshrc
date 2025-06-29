@@ -10,14 +10,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load ZSH Settings
-source ${ZDOTDIR}/zsh-options
+source ${ZDOTDIR}/zsh-options.zsh
 
 # Load Configs
-source ${ZDOTDIR}/zsh-integrations
-source ${ZDOTDIR}/zsh-completion
-source ${ZDOTDIR}/zsh-functions
-source ${ZDOTDIR}/zsh-aliases
-source ${ZDOTDIR}/zsh-vi-mode
+source ${ZDOTDIR}/zsh-integrations.zsh
+source ${ZDOTDIR}/zsh-completion.zsh
+source ${ZDOTDIR}/zsh-functions.zsh
+source ${ZDOTDIR}/zsh-aliases.zsh
+source ${ZDOTDIR}/zsh-vi-mode.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
 zle_highlight+=('paste:none')

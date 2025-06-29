@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [ ! "$1" ]; then
-cat << EOF
+    cat <<EOF
 1 2 3a La/Ac                      4a5a6a7a8a8a8a1a2a3 4 5 6 7 8
 H                                                             He
 LiBe                                                B C N O F Ne
@@ -13,11 +13,11 @@ FrRaAcThPaU NpPuAmCmBkCfEsFmMdNoLr
 
 usage: pse [nuclear charge | element name | element symbol ]
 EOF
-exit
+    exit
 fi
 
 for pattern in $@; do
-rg -i " $pattern " << EOF
+    rg -i " $pattern " <<EOF
   1 Hydrogen     Wasserstoff   H   1s1
   2 Helium                     He  1s2
   3 Lithium                    Li  [He] 2s1
@@ -31,14 +31,14 @@ rg -i " $pattern " << EOF
  11 Sodium       Natrium       Na  [Ne] 3s1
  12 Magnesium                  Mg  [Ne] 3s2
  13 Aluminium                  Al  [Ne] 3s2 3p1
- 14 Silicon      Silizium      Si  [Ne] 3s2 3p2 
+ 14 Silicon      Silizium      Si  [Ne] 3s2 3p2
  15 Phosphorus   Phosphor      P   [Ne] 3s2 3p3
  16 Sulfur       Schwefel      S   [Ne] 3s2 3p4
  17 Chlorine     Chlor         Cl  [Ne] 3s2 3p5
  18 Argon                      Ar  [Ne] 3s2 3p6
  19 Potassium    Kalium        K   [Ar]      4s1
  20 Calcium      Kalzium       Ca  [Ar]      4s2
- 21 Scandium                   Sc  [Ar] 3d1  4s2 
+ 21 Scandium                   Sc  [Ar] 3d1  4s2
  22 Titanium     Titan         Ti  [Ar] 3d2  4s2
  23 Vanadium                   V   [Ar] 3d3  4s2
  24 Chromium     Chrom         Cr  [Ar] 3d5  4s1
@@ -63,7 +63,7 @@ rg -i " $pattern " << EOF
  43 Technetium                 Tc  [Kr] 4d5  5s2
  44 Ruthenium                  Ru  [Kr] 4d7  5s1
  45 Rhodium                    Rh  [Kr] 4d8  5s1
- 46 Palladium                  Pd  [Kr] 4d10 
+ 46 Palladium                  Pd  [Kr] 4d10
  47 Silver       Silber        Ag  [Kr] 4d10 5s1
  48 Cadmium                    Cd  [Kr] 4d10 5s2
  49 Indium                     In  [Kr] 4d10 5s2 5p1

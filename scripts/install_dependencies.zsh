@@ -4,7 +4,10 @@
 set -eu -o pipefail # fail on error and report it, debug all lines
 
 sudo -n true
-test $? -eq 0 || exit 1 "you should have sudo privilege to run this script"
+test $? -eq 0 || {
+    echo -e "\e[31mYou need sudo privilege to run this script\e[30m"
+    exit 1
+}
 
 packages=(
     base
