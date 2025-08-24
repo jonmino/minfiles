@@ -15,6 +15,8 @@ packages=(
     linux-lts
     linux-firmware
     libxcrypt-compat
+    git-lfs
+    git-delta
     man
     sudo
     coreutils
