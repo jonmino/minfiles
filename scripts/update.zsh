@@ -1,6 +1,7 @@
 #!/bin/zsh
 echo "Running update Script"
 yay -Syu
+sudo pacman -Syu
 mamba self-update
 mamba update all
 mamba clean --all --yes
