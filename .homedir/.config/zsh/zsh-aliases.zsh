@@ -37,7 +37,7 @@ alias zshconf="nvim ~/minfiles/.homedir/.config/zsh/.zshrc"
 alias zshenv="nvim ~/minfiles/.homedir/.zshenv"
 alias updateconf="nvim ~/minfiles/scripts/update.zsh"
 alias p10kconf="nvim ~/minfiles/.homedir/.config/zsh/.p10k.zsh"
-alias aliasconf="nvim ~/minfiles/.homedir/.config/zsh/zsh-aliases" # <- this file
+alias aliasconf="nvim ~/minfiles/.homedir/.config/zsh/zsh-aliases.zsh" # <- this file
 alias histedit="nvim ${XDG_DATA_HOME}/zsh_history"
 
 # make
@@ -55,10 +55,9 @@ alias rsync-move="rsync -avz --progress -h --delete-source-files"
 alias rsync-update="rsync -avzu --progress -h"
 alias rsync-update="rsync -avzu --delete --progress -h"
 
-
 ## Setup (rip)grep to show colors by default
-alias rg='rg --color=auto'
-alias grep='grep --color=auto'
+alias rg="batgrep"
+alias grep="batgrep"
 
 # Git
 alias gis="git status"

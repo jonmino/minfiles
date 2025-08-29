@@ -79,10 +79,16 @@ function apt-search {
 }
 
 # DirStack
-alias d='dirs -v' # List DirStack
+alias dir='dirs -v' # List DirStack
 for index ({1..9}) alias "$index"="builtin cd +${index} > /dev/null"; unset index # directory stack
 
-fpop() {
+d() {
     # Only work with alias d defined in zsh-aliases line 5-6
-    d | fzf --height="20%" | cut -f 1 | source /dev/stdin
+    dir | fzf --height="20%" | cut -f 1 | source /dev/stdin
+}
+
+# bathelp, allows do call help <command> instead of <command> --help
+alias bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
 }

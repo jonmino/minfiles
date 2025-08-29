@@ -26,7 +26,6 @@ packages=(
     file
     less
     make
-    most
     rsync
     stow
     sshfs

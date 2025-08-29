@@ -24,13 +24,9 @@ export HISTSIZE=10000
 export SAVEHIST=9999 # Needs to be smaller than HISTSIZE
 
 # Default applications
-export EDITOR=nvim SLANG_EDITOR=nvim MOST_EDITOR=nvim
+export EDITOR=nvim SLANG_EDITOR=nvim
 export BROWSER=firefox
-export PAGER=most MANPAGER=most BAT_PAGER=most
-
-# Most
-export MOST_INITFILE=${XDG_CONFIG_HOME}/most/most.rc
-export MOST_HELP=${XDG_CONFIG_HOME}/most/most.hlp
+export PAGER=less MANPAGER=less BAT_PAGER=less
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'
