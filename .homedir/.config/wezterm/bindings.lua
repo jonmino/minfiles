@@ -12,11 +12,24 @@ config.keys = {
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
-    { key = "Space", mods = "LEADER", action = act.SendKey({ key = "Space", mods = "CTRL" }) }, -- To be able to send CTRL Space
-    { key = "+", mods = "CTRL", action = act.IncreaseFontSize },
+    {
+        key = "Space",
+        mods = "LEADER",
+        action = act.SendKey({ key = "Space", mods = "CTRL" }),
+    }, -- To be able to send CTRL Space
+    { key = "=", mods = "CTRL", action = act.IncreaseFontSize },
     { key = "-", mods = "CTRL", action = act.DecreaseFontSize },
-    { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { key = "/", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "=", mods = "LEADER", action = act.ResetFontSize },
+    {
+        key = "-",
+        mods = "LEADER",
+        action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+    },
+    {
+        key = "/",
+        mods = "LEADER",
+        action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+    },
     { key = "0", mods = "CTRL", action = act.ResetFontSize },
     { key = "f", mods = "CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
     { key = "p", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
@@ -72,8 +85,16 @@ config.keys = {
     { key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "p", mods = "LEADER", action = act.PasteFrom("Clipboard") },
     { key = "x", mods = "LEADER", action = act.CloseCurrentTab({ confirm = false }) },
-    { key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-    { key = "d", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS" }) },
+    {
+        key = "w",
+        mods = "LEADER",
+        action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+    },
+    {
+        key = "d",
+        mods = "LEADER",
+        action = act.ShowLauncherArgs({ flags = "FUZZY|LAUNCH_MENU_ITEMS|DOMAINS" }),
+    },
     -- Prompt for a name to use for a new workspace and switch to it.
     {
         key = "W",
