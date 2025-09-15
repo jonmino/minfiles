@@ -1,7 +1,9 @@
 #!/bin/zsh
 echo "Running update Script"
 yay -Syu
-sudo pacman -Syu
+# Reinstall/Update Zoxide
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+nvm install --lts
 mamba self-update
 mamba update all
 mamba clean --all --yes

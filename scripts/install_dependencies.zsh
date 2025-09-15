@@ -39,6 +39,7 @@ packages=(
     fd
     fzf
     lazygit
+    tree-sitter
     neovim
     ripgrep
     yazi
@@ -52,6 +53,22 @@ sudo pacman -Sy "${packages[@]}"
 # Zoxide see https://github.com/ajeetdsouza/zoxide for installation guide
 echo "Installing Zoxide ..."
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+# Node see https://nodejs.org/en/download for installation guide
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+
+# Download and install Node.js:
+nvm install --lts
+
+# Verify the Node.js version:
+node -v # Should print "v22.19.0".
+
+# Verify npm version:
+npm -v # Should print "10.9.3".
 
 echo
 echo
