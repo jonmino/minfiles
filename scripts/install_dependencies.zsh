@@ -54,6 +54,9 @@ sudo pacman -Sy "${packages[@]}"
 echo "Installing Zoxide ..."
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
+echo "Installing Oh-My-Posh ..."
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+
 # Node see https://nodejs.org/en/download for installation guide
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash

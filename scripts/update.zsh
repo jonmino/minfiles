@@ -1,6 +1,7 @@
 #!/bin/zsh
 echo "Running update Script"
 yay -Syu
+oh-my-posh upgrade
 # Reinstall/Update Zoxide
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 nvm install --lts
