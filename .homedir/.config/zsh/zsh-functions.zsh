@@ -28,31 +28,6 @@ function yazicdonquit() {
     rm -f -- "$tmp"
 }
 
-# Change cursor shape for different vi modes.
-vi_cursor_mode() {
-    cursor_block='\e[2 q'
-    cursor_beam='\e[6 q'
-    function zle-keymap-select {
-        if [[ ${KEYMAP} == vicmd ]] ||
-            [[ $1 = 'block' ]]; then
-            echo -ne $cursor_block
-        elif [[ ${KEYMAP} == main ]] ||
-            [[ ${KEYMAP} == viins ]] ||
-            [[ ${KEYMAP} = '' ]] ||
-            [[ $1 = 'beam' ]]; then
-            echo -ne $cursor_beam
-        fi
-    }
-
-    zle-line-init() {
-        echo -ne $cursor_beam
-    }
-
-    zle -N zle-keymap-select
-    zle -N zle-line-init
-}
-
-
 function profileZSH() {
     zmodload zsh/zprof
     source ~/.config/zsh/.zshrc
@@ -64,19 +39,6 @@ function cpv() {
     rsync -brav -hhh --backup-dir="/tmp/rsync-${USERNAME}" -e /dev/null --progress "$@"
 }
 compdef _files cpv
-
-# List apt packages by size
-function apt-list-packages {
-    dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | \
-    grep -v deinstall | \
-    sort -n | \
-    awk '{print $1" "$2}'
-}
-
-# Search cashed apt Packages with fzf
-function apt-search {
-    apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
-}
 
 # DirStack
 alias dir='dirs -v' # List DirStack
@@ -91,4 +53,21 @@ d() {
 alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
+}
+
+# Package functions
+lpac() { # List installed packages
+    pacman -Q | fzf --multi --reverse --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Q
+}
+
+lyay() {
+    yay -Q | fzf --multi --reverse --preview 'yay -Qi {1}' | xargs -ro yay -Q
+}
+
+fpac() { # Search for packages
+    pacman -Slq | fzf --multi --reverse --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+}
+
+fyay() {
+    yay -Slq | fzf --multi --reverse --preview 'yay -Si {1}' | xargs -ro yay -S
 }

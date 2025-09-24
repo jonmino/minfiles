@@ -45,7 +45,7 @@ zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 # Complete aliases with _expand_alias
 zstyle ':completion:*' complete true
 zle -C alias-expension complete-word _generic
-bindkey '^xa' alias-expension
+bindkey '^Xa' alias-expension
 zstyle ':completion:alias-expension:*' completer _expand_alias
 
 zstyle ':completion:*' menu select # Menu selection of Tab complete
