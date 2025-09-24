@@ -1,0 +1,252 @@
+console_title_template = "{{ .Shell }}"
+version = 3
+final_space = true
+shell_integration = true
+async = true
+pwd = "{{ .Path }}"
+
+[upgrade]
+source = "cdn"
+interval = "168h"
+auto = false
+notice = false
+
+[palette]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[transient_prompt]
+background = "transparent"
+foreground = "p:text"
+template = "\uF460 "
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+
+[[blocks.segments]]
+leading_diamond = "╭─"
+template = "{{ .Icon }}"
+foreground = "p:mantle"
+background = "p:text"
+type = "os"
+style = "diamond"
+
+[blocks.segments.properties]
+archlinux = "\uF303"
+
+[[blocks.segments]]
+template = "  {{ .Path }} "
+foreground = "p:mantle"
+powerline_symbol = ""
+background = "p:sapphire"
+type = "path"
+style = "powerline"
+
+[blocks.segments.properties]
+home_icon = "~"
+style = "full"
+
+[[blocks.segments]]
+template = " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:green"
+type = "git"
+style = "powerline"
+background_templates = [
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}",
+    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
+    "{{ if gt .Ahead 0 }}p:sky{{ end }}",
+    "{{ if gt .Behind 0 }}p:green{{ end }}",
+]
+
+[blocks.segments.properties]
+branch_icon = " "
+fetch_status = true
+fetch_upstream_icon = true
+
+[[blocks]]
+type = "prompt"
+alignment = "right"
+
+[[blocks.segments]]
+template = " {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:pink"
+type = "node"
+style = "powerline"
+invert_powerline = true
+
+[blocks.segments.properties]
+fetch_version = true
+
+[[blocks.segments]]
+template = " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:sky"
+type = "go"
+style = "powerline"
+invert_powerline = true
+
+[blocks.segments.properties]
+fetch_version = true
+
+[[blocks.segments]]
+template = " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:blue"
+type = "julia"
+style = "powerline"
+invert_powerline = true
+
+[blocks.segments.properties]
+fetch_version = true
+
+[[blocks.segments]]
+template = " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:yellow"
+type = "python"
+style = "powerline"
+invert_powerline = true
+
+[blocks.segments.properties]
+display_mode = "files"
+fetch_virtual_env = false
+
+[[blocks.segments]]
+template = " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:red"
+type = "ruby"
+style = "powerline"
+invert_powerline = true
+
+[blocks.segments.properties]
+display_mode = "files"
+fetch_version = true
+
+[[blocks.segments]]
+template = " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:peach"
+type = "azfunc"
+style = "powerline"
+invert_powerline = true
+
+[blocks.segments.properties]
+display_mode = "files"
+fetch_version = false
+
+[[blocks.segments]]
+template = " {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+type = "aws"
+style = "powerline"
+background_templates = [
+    "{{if contains 'default' .Profile}}p:peach{{end}}",
+    "{{if contains 'jan' .Profile}}p:red{{end}}",
+]
+invert_powerline = true
+
+[blocks.segments.properties]
+display_default = false
+
+[[blocks.segments]]
+template = "  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:maroon"
+type = "root"
+style = "powerline"
+invert_powerline = true
+
+[[blocks.segments]]
+template = " {{ .FormattedMs }}  "
+foreground = "p:crust"
+powerline_symbol = ""
+background = "p:peach"
+type = "executiontime"
+style = "powerline"
+invert_powerline = true
+
+[[blocks.segments]]
+template = " {{ if gt .Code 0 }}{{ reason .Code }}{{ else }}\uF00C{{ end }} "
+foreground = "p:teal"
+powerline_symbol = ""
+background = "p:crust"
+type = "status"
+style = "powerline"
+background_templates = ["{{ if gt .Code 0 }}p:red{{ end }}"]
+invert_powerline = true
+
+[blocks.segments.properties]
+always_enabled = true
+
+[[blocks.segments]]
+template = "  {{ .Venv }} "
+powerline_symbol = ""
+type = "python"
+style = "powerline"
+foreground = "p:crust"
+background = "p:mauve"
+invert_powerline = true
+
+[blocks.segments.properties]
+display_mode = "environment"
+fetch_virtual_env = true
+display_default = true
+home_enabled = true
+
+[[blocks.segments]]
+trailing_diamond = "─╮"
+template = " {{ .CurrentDate | date .Format }}  "
+foreground = "p:mantle"
+background = "p:text"
+type = "time"
+style = "diamond"
+invert_powerline = true
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+[[blocks.segments]]
+template = "╰─"
+foreground = "p:text"
+type = "text"
+style = "plain"
+
+[[blocks]]
+type = "rprompt"
+
+[[blocks.segments]]
+template = "─╯"
+foreground = "p:text"
+type = "text"
+style = "plain"
