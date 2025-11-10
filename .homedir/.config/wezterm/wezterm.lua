@@ -28,6 +28,9 @@ config.swallow_mouse_click_on_window_focus = true
 -- Without dot & slash to make paths one word
 config.selection_word_boundary = " \t\n{}[]()\"'`,;:@│┃*…$"
 config.warn_about_missing_glyphs = false -- Annyoing because of the additional Window
+-- define update behavior
+config.check_for_updates = true
+config.check_for_updates_interval_seconds = 21600
 
 -- Assemble config from different subfiles
 -- In newer versions of wezterm, use the config_builder which will

@@ -24,7 +24,6 @@ alias ltt='eza -Tha --level=2'
 alias y="yazicdonquit"
 
 # bat
-alias man="batman"
 alias cat="bat"
 
 # WSL2/Windows
@@ -56,8 +55,7 @@ alias rsync-update="rsync -avzu --progress -h"
 alias rsync-update="rsync -avzu --delete --progress -h"
 
 ## Setup (rip)grep to show colors by default
-alias rg="batgrep"
-alias grep="batgrep"
+alias grep="deltagrep"
 
 # Git
 alias gis="git status"
@@ -80,7 +78,7 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 
 # misc
-alias update="zsh ~/minfiles/scripts/update.zsh"
+alias update_all="zsh ~/minfiles/scripts/update_all.zsh"
 alias lg="lazygit"
 alias bcd="builtin cd"
 alias pse="zsh ~/minfiles/scripts/pse.zsh"

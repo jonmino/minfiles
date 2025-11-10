@@ -1,5 +1,5 @@
 #!/bin/zsh
-echo "Running update Script"
+echo "Running update all Script"
 yay -Syu
 oh-my-posh upgrade
 # Reinstall/Update Zoxide

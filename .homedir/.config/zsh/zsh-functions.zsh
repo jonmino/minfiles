@@ -49,25 +49,30 @@ d() {
     dir | fzf --height="20%" | cut -f 1 | source /dev/stdin
 }
 
+# bat functions
 # bathelp, allows do call help <command> instead of <command> --help
 alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
 }
 
+deltagrep() { # Needs theming
+    rg "$@" --json | delta
+}
+
 # Package functions
-lpac() { # List installed packages
-    pacman -Q | fzf --multi --reverse --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Q
+bremove() { # List installed packages
+    pacman -Qq | fzf --multi --reverse --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -R
 }
 
-lyay() {
-    yay -Q | fzf --multi --reverse --preview 'yay -Qi {1}' | xargs -ro yay -Q
+remove() {
+    yay -Qq | fzf --multi --reverse --preview 'yay -Qi {1}' | xargs -ro yay -R
 }
 
-fpac() { # Search for packages
-    pacman -Slq | fzf --multi --reverse --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+binstall() { # Search for packages
+    pacman -Slq | fzf --multi --reverse --preview 'pacman -Si {1}' | xargs -ro sudo pacman -Sy
 }
 
-fyay() {
-    yay -Slq | fzf --multi --reverse --preview 'yay -Si {1}' | xargs -ro yay -S
+install() {
+    yay -Slq | fzf --multi --reverse --preview 'yay -Si {1}' | xargs -ro yay -Sy
 }

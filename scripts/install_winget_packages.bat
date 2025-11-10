@@ -11,7 +11,7 @@ winget install --id Microsoft.VisualStudioCode
 winget install --id Microsoft.OneDrive
 winget install --id VideoLAN.VLC
 winget install --id th-ch.YouTubeMusic
-winget install --id NordSecurity.NordVPN
+winget install --id PrivateInternetAccess.PrivateInternetAccess
 winget install --id Zoom.Zoom
 winget install --id Inkscape.Inkscape
 winget install --id GIMP.GIMP.3
