@@ -40,14 +40,12 @@ function cpv() {
 }
 compdef _files cpv
 
-# DirStack
-alias dir='dirs -v' # List DirStack
-for index ({1..9}) alias "$index"="builtin cd +${index} > /dev/null"; unset index # directory stack
-
-d() {
-    # Only work with alias d defined in zsh-aliases line 5-6
-    dir | fzf --height="20%" | cut -f 1 | source /dev/stdin
+function fzf-change-dirstack() {
+    local ldir=$(dirs -v | tail -n +2 | fzf --height="20%" --header="current: $(pwd)" | cut -f 1)
+    cd -- "+$ldir" >/dev/null
+    unset ldir
 }
+zle -N fzf-change-dirstack
 
 # bat functions
 # bathelp, allows do call help <command> instead of <command> --help

@@ -8,6 +8,12 @@ alias ....='builtin cd ../../..'
 alias .4='builtin cd ../../../../'
 alias .5='builtin cd ../../../../..'
 
+# DirStack
+alias dirsv='dirs -v' # List DirStack
+for index in {1..9}; do alias "$index"="builtin cd +${index} > /dev/null"; done
+unset index
+alias d='fzf-change-dirstack'
+
 # ls/eza aliases
 alias l='eza'
 alias ll='eza -lah --git --icons=always --colour-scale=size'

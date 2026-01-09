@@ -1,9 +1,9 @@
 [user]
-	name = Jonas Minor
-	email = github@nc.seltsam.net
+    name = Jonas Minor
+    email = github@nc.seltsam.net
 
 [core]
-	editor = nvim
+    editor = nvim
     pager = delta
 
 [interactive]
@@ -20,29 +20,30 @@
     side-by-side = true
 
 [alias]
-	lg = log --graph --branches --remotes --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --graph --branches --remotes --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    mergetool = !nvim -c DiffviewOpen
 
 [rebase]
-	stat = true
+    stat = true
 
 [merge]
-	conflictstyle = zdiff3
+    conflictstyle = zdiff3
 
 [rerere]
-	enabled = true
+    enabled = true
 
 [pull]
-	rebase = true
+    rebase = true
 
 [push]
-	autoSetupRemote = true
-	default = simple
+    autoSetupRemote = true
+    default = simple
 
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
