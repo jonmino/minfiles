@@ -7,14 +7,22 @@
 # : Flavor {{{
 
 [flavor]
-use = "catppuccin-mocha"
+dark = "catppuccin-mocha"
+light = "catppuccin-mocha"
+
+# : }}}
+
+# : Indicator {{{
+
+[indicator]
+padding = { open = "", close = "" }
 
 # : }}}
 
 # : Status {{{
 
 [status]
-separator_open  = ""
-separator_close = ""
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
 # : }}}
