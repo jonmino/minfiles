@@ -40,7 +40,7 @@ alias terminate="wsl.exe --terminate archlinux"
 # configs
 alias zshconf="nvim ~/minfiles/.homedir/.config/zsh/.zshrc"
 alias zshenv="nvim ~/minfiles/.homedir/.zshenv"
-alias updateconf="nvim ~/minfiles/scripts/update.zsh"
+alias updateconf="nvim ~/minfiles/scripts/update_all.zsh"
 alias p10kconf="nvim ~/minfiles/.homedir/.config/zsh/.p10k.zsh"
 alias aliasconf="nvim ~/minfiles/.homedir/.config/zsh/zsh-aliases.zsh" # <- this file
 alias histedit="nvim ${XDG_DATA_HOME}/zsh_history"
