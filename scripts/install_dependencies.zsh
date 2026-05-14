@@ -38,7 +38,7 @@ packages=(
     fd
     fzf
     lazygit
-    tree-sitter
+    tree-sitter-cli
     neovim
     ripgrep
     yazi
