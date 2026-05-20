@@ -16,3 +16,15 @@
 [submodule ".homedir/.config/yazi/flavors"]
 	path = .homedir/.config/yazi/flavors
 	url = https://github.com/yazi-rs/flavors.git
+[submodule "submodules/themes/bat"]
+	path = submodules/themes/bat
+	url = https://github.com/catppuccin/bat.git
+[submodule "submodules/themes/delta"]
+	path = submodules/themes/delta
+	url = https://github.com/catppuccin/delta.git
+[submodule "submodules/themes/zsh-fsh"]
+	path = submodules/themes/zsh-fsh
+	url = https://github.com/catppuccin/zsh-fsh.git
+[submodule "submodules/themes/lazygit"]
+	path = submodules/themes/lazygit
+	url = https://github.com/catppuccin/lazygit.git

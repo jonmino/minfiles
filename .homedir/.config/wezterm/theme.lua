@@ -38,4 +38,9 @@ theme.symbols = {
     thin_space = "\u{200A}",
 }
 
+theme.names = {
+    dark = "Catppuccin Mocha v2",
+    light = "Catppuccin Latte",
+}
+
 return theme

@@ -1,5 +1,7 @@
 # Set the theme
---theme="Catppuccin Mocha"
+--theme=auto:always
+--theme-dark="Catppuccin Mocha"
+--theme-light="Catppuccin Latte"
 
 # Show line numbers, Git modifications and file header (but no grid)
---style="numbers,changes,header"
+--style="numbers,changes,header,snip,rule"

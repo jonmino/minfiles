@@ -45,7 +45,9 @@ local function new_tab(bg, text)
 end
 
 local function right_status_element(fg, next, text)
-    return { Background = { Color = next } }, { Foreground = { Color = fg } }, { Text = symbols.solid_left_arrow }, {
+    return { Background = { Color = next } }, { Foreground = { Color = fg } }, {
+        Text = symbols.solid_left_arrow,
+    }, {
         Background = { Color = fg },
     }, { Foreground = { Color = colors.crust } }, { Text = text }
 end
@@ -57,6 +59,14 @@ config.color_schemes = { ["Catppuccin Mocha v2"] = catppuccin }
 config.color_scheme = "Catppuccin Mocha v2"
 config.window_background_opacity = 0.9
 config.text_background_opacity = 1.0
+-- HACK: Weird things happening
+for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
+    if gpu.backend == "Gl" then
+        config.webgpu_preferred_adapter = gpu
+        config.front_end = "WebGpu"
+        break
+    end
+end
 config.enable_scroll_bar = false
 config.default_cursor_style = "SteadyBar"
 config.cursor_thickness = "0.075cell"
@@ -225,19 +235,28 @@ wezterm.on("update-status", function(window, pane)
         right_status_element(
             colors.peach,
             colors.crust,
-            wezterm.nerdfonts.md_folder .. symbols.thin_space .. cwd .. symbols.thin_space
+            wezterm.nerdfonts.md_folder
+                .. symbols.thin_space
+                .. cwd
+                .. symbols.thin_space
         ),
     }) .. wezterm.format({
         right_status_element(
             colors.blue,
             colors.peach,
-            wezterm.nerdfonts.md_clock .. symbols.thin_space .. time .. symbols.thin_space
+            wezterm.nerdfonts.md_clock
+                .. symbols.thin_space
+                .. time
+                .. symbols.thin_space
         ),
     }) .. wezterm.format({
         right_status_element(
             colors.mauve,
             colors.blue,
-            wezterm.nerdfonts.md_calendar .. symbols.thin_space .. date .. symbols.thin_space
+            wezterm.nerdfonts.md_calendar
+                .. symbols.thin_space
+                .. date
+                .. symbols.thin_space
         ),
     }))
 end)

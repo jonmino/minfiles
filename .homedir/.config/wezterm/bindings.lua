@@ -2,13 +2,27 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 -- imports/aliases
-local colors = require("theme").colors
+local theme = require("theme")
+local colors = theme.colors
 local act = wezterm.action
 local config = {}
 
 config.disable_default_key_bindings = true
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 2500 }
 config.keys = {
+    {
+        key = "t",
+        mods = "LEADER",
+        action = wezterm.action_callback(function(window, pane)
+            local overrides = window:get_config_overrides() or {}
+            if overrides.color_scheme == theme.names.light then
+                overrides.color_scheme = theme.names.dark
+            else
+                overrides.color_scheme = theme.names.light
+            end
+            window:set_config_overrides(overrides)
+        end),
+    },
     { key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
     { key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
@@ -68,7 +82,7 @@ config.keys = {
             until_unknown = false,
         }),
     },
-    { key = "t", mods = "LEADER", action = act.ShowTabNavigator },
+    { key = "Tab", mods = "LEADER", action = act.ShowTabNavigator },
     { key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
     { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
     {

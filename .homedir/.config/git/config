@@ -13,8 +13,10 @@
     path = ~/.config/delta/themes/catppuccin.gitconfig
 
 [delta]
+    features = decorations
+
+[delta "decorations"]
     true-color = always
-    features = catppuccin-mocha
     navigate = true # n and N to move between diff sections
     hyperlinks = false
     side-by-side = true

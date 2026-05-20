@@ -1,4 +1,47 @@
 #!/usr/bin/env zsh
+function detect_terminal_theme() {
+    emulate -L zsh
+
+    local response
+    local oldstty
+    local r g b brightness
+
+    exec </dev/tty
+
+    oldstty=$(stty -g)
+    stty raw -echo min 0 time 0
+
+    printf '\033]11;?\007' >/dev/tty
+
+    sleep 0.1
+
+    response=$(dd bs=1 count=64 2>/dev/null)
+
+    stty "$oldstty"
+
+    # Extract full 16-bit RGB values
+    if [[ $response =~ 'rgb:([0-9a-fA-F]{4})/([0-9a-fA-F]{4})/([0-9a-fA-F]{4})' ]]; then
+        r=$((16#${match[1]}))
+        g=$((16#${match[2]}))
+        b=$((16#${match[3]}))
+
+        # Scale 16-bit -> 8-bit
+        r=$((r / 257))
+        g=$((g / 257))
+        b=$((b / 257))
+
+        brightness=$(((r + g + b) / 3))
+
+        if ((brightness < 128)); then
+            echo dark
+        else
+            echo light
+        fi
+    else
+        echo unknown
+    fi
+}
+
 function mambas() {
     environments=$(mamba env list | tail -n +4 | cut -d ' ' -f 3)
     items=("base" "deactivate" "$environments")
@@ -54,8 +97,35 @@ help() {
     "$@" --help 2>&1 | bathelp
 }
 
-deltagrep() { # Needs theming
-    rg "$@" --json | delta
+function set_delta_features() {
+    local theme
+    if [[ "$(detect_terminal_theme)" == "light" ]]; then
+        theme="catppucin-latte"
+    else
+        theme="catppuccin-mocha"
+    fi
+    export DELTA_FEATURES="${theme} decorations"
+}
+
+function git() {
+    set_delta_features
+    command git "$@"
+}
+
+function deltagrep() {
+    set_delta_features
+    command rg "$@" --json | delta
+}
+
+# lazygit
+function lazygit() {
+    local theme
+    if [[ "$(detect_terminal_theme)" == "light" ]]; then
+        theme="latte"
+    else
+        theme="mocha"
+    fi
+    command lazygit --use-config-file="${XDG_CONFIG_HOME}/lazygit/config.yml,${XDG_CONFIG_HOME}/lazygit/${theme}-sapphire.yml"
 }
 
 # Package functions
