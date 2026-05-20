@@ -26,7 +26,8 @@ export SAVEHIST=9999 # Needs to be smaller than HISTSIZE
 # Default applications
 export EDITOR=nvim SLANG_EDITOR=nvim
 export BROWSER=firefox
-export PAGER=less BAT_PAGER=less MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
+export PAGER="less -RFK" BAT_PAGER="less -RFK" DELTA_PAGER="less -RFK" MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 # FZF
 export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'

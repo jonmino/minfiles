@@ -31,6 +31,7 @@ alias y="yazicdonquit"
 
 # bat
 alias cat="bat"
+alias grep="batgrep --smart-case" # Colorful Grep with sane defaults
 
 # WSL2/Windows
 alias reveal="explorer.exe ." # Reveal current dir in File explorer
@@ -59,9 +60,6 @@ alias rsync-copy="rsync -avz --progress -h"
 alias rsync-move="rsync -avz --progress -h --delete-source-files"
 alias rsync-update="rsync -avzu --progress -h"
 alias rsync-update="rsync -avzu --delete --progress -h"
-
-## Setup (rip)grep to show colors by default
-alias grep="deltagrep"
 
 # Git
 alias gis="git status"

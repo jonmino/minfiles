@@ -63,12 +63,11 @@ function mambas() {
 zle -N mambas
 
 function yazicdonquit() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXX")" cwd
-    yazi "$@" --cwd-file="$tmp"
-    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        builtin cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    command rm -f -- "$tmp"
 }
 
 function profileZSH() {
@@ -93,8 +92,10 @@ zle -N fzf-change-dirstack
 # bat functions
 # bathelp, allows do call help <command> instead of <command> --help
 alias bathelp='bat --plain --language=help'
+
+# Add command here to escape the wrappers for various commands
 help() {
-    "$@" --help 2>&1 | bathelp
+    command "$@" --help 2>&1 | bathelp
 }
 
 function set_delta_features() {
@@ -110,11 +111,6 @@ function set_delta_features() {
 function git() {
     set_delta_features
     command git "$@"
-}
-
-function deltagrep() {
-    set_delta_features
-    command rg "$@" --json | delta
 }
 
 # lazygit
