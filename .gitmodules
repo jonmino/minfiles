@@ -13,9 +13,6 @@
 [submodule "submodules/zsh-bd"]
 	path = submodules/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
-[submodule ".homedir/.config/yazi/flavors"]
-	path = .homedir/.config/yazi/flavors
-	url = https://github.com/yazi-rs/flavors.git
 [submodule "submodules/themes/bat"]
 	path = submodules/themes/bat
 	url = https://github.com/catppuccin/bat.git
@@ -28,3 +25,7 @@
 [submodule "submodules/themes/lazygit"]
 	path = submodules/themes/lazygit
 	url = https://github.com/catppuccin/lazygit.git
+[submodule "submodules/themes/ctp-yazi"]
+	path = submodules/themes/ctp-yazi
+	url = git@github.com:jonmino/ctp-yazi.git
+	branch = move-to-flavor-format
