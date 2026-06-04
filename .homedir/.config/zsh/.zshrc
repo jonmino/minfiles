@@ -38,6 +38,9 @@ bindkey -e
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 bindkey '^O' mambas # ctrl + o as shortcut keybinding
+zle -C alias-expension complete-word _generic
+bindkey '^xa' alias-expension
+bindkey '^Xa' alias-expension
 # Edit line in editor with <CTRL-E>:
 autoload -Uz edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
