@@ -10,40 +10,42 @@ test $? -eq 0 || {
 }
 
 packages=(
+    7zip
     base
     base-devel
-    linux-lts
-    linux-firmware
-    libxcrypt-compat
-    git-lfs
-    git-delta
-    man
-    sudo
-    coreutils
+    bat
+    bat-extras
     cmake
+    coreutils
     curl
     evince
-    file
-    less
-    make
-    rsync
-    stow
-    sshfs
-    tar
-    unzip
-    wget
-    7zip
-    bat
     eza
     fd
+    file
     fzf
+    git-delta
+    git-lfs
     lazygit
-    tree-sitter-cli
+    less
+    libxcrypt-compat
+    linux-firmware
+    linux-lts
+    make
+    man
     neovim
-    ripgrep
-    yazi
-    pkgfile
     openssh
+    pkgfile
+    ripgrep
+    rsync
+    sshfs
+    stow
+    sudo
+    tar
+    timeshift
+    tree-sitter-cli
+    unzip
+    wget
+    yazi
 )
 
 echo "Installing applications from apt"

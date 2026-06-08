@@ -89,7 +89,6 @@ alias -g C="| tee >(win32yank.exe -i)" # [Copy] output of command
 alias -g L='| bat' # Pipe output to [L]ess pager with bat coloring
 
 # misc
-alias update_all="zsh ~/minfiles/scripts/update_all.zsh"
 alias lg="lazygit"
 alias bcd="builtin cd"
 alias pse="zsh ~/minfiles/scripts/pse.zsh"
