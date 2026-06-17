@@ -77,7 +77,7 @@ config.inactive_pane_hsb = { -- Distinguish inactive from active pane
 }
 -- Font Settings
 config.font = wezterm.font({
-    family = "Monaspace Neon",
+    family = "Monaspace Neon NF",
     weight = "Medium",
     italic = false,
     scale = 1, -- The code below activates font ligatures

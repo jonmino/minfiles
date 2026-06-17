@@ -15,7 +15,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 zle_highlight+=('paste:none')
 
 # Initialize OhMyPosh
-eval "$(oh-my-posh init zsh --config ~/.config/omp/ompconfig.toml)"
+eval "$(oh-my-posh init zsh --config ~/.config/omp/ompconfig.json)"
 
 # Initialize ssh-agent with suppressed output
 {eval "$(ssh-agent -s)";} &>/dev/null
