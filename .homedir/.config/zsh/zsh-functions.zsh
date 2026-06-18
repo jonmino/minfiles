@@ -125,18 +125,18 @@ function lazygit() {
 }
 
 # Package functions
-bremove() { # List installed packages
+remove() { # List installed packages
     pacman -Qq | fzf --multi --reverse --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -R
 }
 
-remove() {
+aurremove() {
     yay -Qq | fzf --multi --reverse --preview 'yay -Qi {1}' | xargs -ro yay -R
 }
 
-binstall() { # Search for packages
+install() { # Search for packages
     pacman -Slq | fzf --multi --reverse --preview 'pacman -Si {1}' | xargs -ro sudo pacman -Sy
 }
 
-install() {
+aurinstall() {
     yay -Slq | fzf --multi --reverse --preview 'yay -Si {1}' | xargs -ro yay -Sy
 }
