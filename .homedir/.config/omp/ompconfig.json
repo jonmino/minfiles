@@ -49,6 +49,7 @@
     "version": 4,
     "final_space": true,
     "shell_integration": true,
+    "enable_cursor_positioning": true,
     "async": true,
     "pwd": "{{ .Path }}",
     "upgrade": {
@@ -58,7 +59,7 @@
         "notice": true
     },
     "transient_prompt": {
-        "backgrund": "transparent",
+        "background": "transparent",
         "foreground": "p:text",
         "template": ""
     },

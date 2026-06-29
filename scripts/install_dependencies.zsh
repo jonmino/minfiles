@@ -34,6 +34,7 @@ packages=(
     man
     neovim
     openssh
+    pacman-contrib
     pkgfile
     ripgrep
     rsync
