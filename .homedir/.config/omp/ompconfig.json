@@ -50,7 +50,7 @@
     "final_space": true,
     "shell_integration": true,
     "enable_cursor_positioning": true,
-    "async": true,
+    "async": false,
     "pwd": "{{ .Path }}",
     "upgrade": {
         "source": "cdn",
